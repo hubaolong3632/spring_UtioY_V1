@@ -10,6 +10,8 @@ import java.util.List;
 public enum ResultCode {
 
     /*失败错误码*/
+    SUCCESS_NO_Show(-10, "错误"),
+
     TONKEN_NO(-5, "token失效"),
     SUCCESS_NO(-4, "失败"),
 

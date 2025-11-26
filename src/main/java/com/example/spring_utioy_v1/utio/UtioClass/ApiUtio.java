@@ -140,14 +140,14 @@ public class ApiUtio {
         JSONObject jsonObject = JSON.parseObject(json);
         Integer errcode = jsonObject.getInteger("errcode");
 
-        if(errcode!=0){
-            if(errcode==40029){
-                 throw new ReturnException("code已使用过");
-            }
-
-//            其他错误
-            throw new ReturnException(jsonObject.getString("errmsg"));
-        }
+//        if(errcode!=0){
+//            if(errcode==40029){
+//                 throw new ReturnException("code已使用过");
+//            }
+//
+////            其他错误
+//            throw new ReturnException(jsonObject.getString("errmsg"));
+//        }
 
 
     }

@@ -54,6 +54,53 @@ public class Result implements Serializable {
         return result;
     }
 
+
+    //  执行状态成功或者失败 直接返回
+    public static Result utio(Boolean bol,String yes,String no) {
+        Result result = new Result();
+           if(bol==true){
+               result.setResultCode(ResultCode.SUCCESS);
+               result.setMsg(yes);
+           }else {
+               result.setResultCode(ResultCode.SUCCESS_NO);
+               result.setMsg(no);
+           }
+        return result;
+    }
+
+    // 带一个参数直接返回成功与否
+    public static Result utio(Boolean bol,String msg) {
+        Result result = new Result();
+        if(bol==true){
+            result.setResultCode(ResultCode.SUCCESS);
+            result.setMsg(msg+"成功");
+        }else {
+            result.setResultCode(ResultCode.SUCCESS_NO);
+            result.setMsg(msg+"失败");
+        }
+        return result;
+    }
+
+
+
+
+
+//    不需要弹窗的
+    public static Result error_noShow() {
+        Result result = new Result();
+        result.setResultCode(ResultCode.SUCCESS_NO_Show);
+        result.setMsg("失败");
+        return result;
+    }
+
+    //    不需要弹窗的
+    public static Result error_noShow(String msg) {
+        Result result = new Result();
+        result.setResultCode(ResultCode.SUCCESS_NO_Show);
+        result.setMsg(msg);
+        return result;
+    }
+
     public static Result failure() {
         Result result = new Result();
         result.setResultCode(ResultCode.SUCCESS_NO);
@@ -65,6 +112,14 @@ public class Result implements Serializable {
         result.setResultCode(ResultCode.SUCCESS_NO);
         result.setMsg(msg);
         result.setCode(code);
+        return result;
+    }
+
+
+    public static Result failure(String msg) {
+        Result result = new Result();
+        result.setResultCode(ResultCode.SUCCESS_NO);
+        result.setMsg(msg);
         return result;
     }
 

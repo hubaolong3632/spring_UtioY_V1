@@ -7,8 +7,7 @@ spring:
     #rewriteBatchedStatements做批处理
     url: "jdbc:mysql://127.0.0.1:3306/aignite?characterEncoding=utf8&autoReconnect=true&autoReconnectForPools=true&connectTimeout=0&useSSL=false&allowMultiQueries=true&rewriteBatchedStatements=true"
     username: "root"
-    password: "root"
-    #    password: "6051b69a05c19222"
+    password: "123456"
 
     driver-class-name: "com.mysql.cj.jdbc.Driver"
     #druid数据库连接池
@@ -36,8 +35,10 @@ jwt:
   machine_refresh: 10    #机器过期时间
   publicKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp49w7qqY31OiE+UQ1dtsoOsXJIBe7fVqLPTIaMBB1C23VlSiNHN57X+6ltxMivHvRO4Eo9eEWwAvrS0Q8CJb4aRNXV+IuRjFxZbZGPVtbZoZ70pXldfUjzlGhXIlMkaaZsk7TUkSLqjukyb2CqOpnV0RvQXodO1FUPg3Z4RcLXXO0yeY97GCCLhxPCrprswIH9sRVp7gzr5EtFo9RJrZjH4go84SUgqDoEtXjxoHcFL30Xvt92W4015Yu7g4bjDltwpwm2SJ5/4wjrrSaRJeMLR0JdvZ/lRCWbrunnvx/qGL8vBhSN1Nq+C/aoU/K7gKNkGuz1sloxwVNh/953eI5wIDAQAB"
   privateKey: "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCnj3DuqpjfU6IT5RDV22yg6xckgF7t9Wos9MhowEHULbdWVKI0c3ntf7qW3EyK8e9E7gSj14RbAC+tLRDwIlvhpE1dX4i5GMXFltkY9W1tmhnvSleV19SPOUaFciUyRppmyTtNSRIuqO6TJvYKo6mdXRG9Beh07UVQ+DdnhFwtdc7TJ5j3sYIIuHE8KumuzAgf2xFWnuDOvkS0Wj1EmtmMfiCjzhJSCoOgS1ePGgdwUvfRe+33ZbjTXli7uDhuMOW3CnCbZInn/jCOutJpEl4wtHQl29n+VEJZuu6ee/H+oYvy8GFI3U2r4L9qhT8ruAo2Qa7PWyWjHBU2H/3nd4jnAgMBAAECggEAA1bUBSamLuzk6WjrLhH8mTx9luAyTKNb9Yyo/aHzNEnVEyGXPlQlVEI3rLyz5NyPnVm+aVP+I+Cmo6V8KtPbZPXcW+WiuMiEstpOwspWXyomg0s9aP5X34DPdyJVoinTKlnRRWwumL625NIqLhBMbP1+p28vAbS31+EBYNnEYFxy1XN8U1m9csw+bWy4eBuyPlZVoPgRP35frsETD9WvBKAVJqpDLTPEt8KRWn0UoV2/N1u9q+zXyrtHrEyk9pNvl6YjuRHqsHtnpVVRNsFzq3sQrWGFSSSvzd4JeNo2aOyMR/ayruv51VnL9fYT6qYePuUVd9/MrUNEvT0IYXJfeQKBgQDVDbV+4sKobMvzRYhGraVNZfezP3x4Tk37aOhTK4HtlE7S6OxuqEK63qY69cQ50aw97PPvVG83NA4ezoZedmctvr7ZOPDFuRCeGOdzfnzEfH9xW360SvRphjDDx31GtFMdLDqq7vaRTCUc12aEeuZtjFGepHpTL+yErvcwbD+1vwKBgQDJViA7TjOoT5JSKRzGHIPWtCfjLR1jDbvd/3+Kb2f7s3gJJ7mZQwclFhIcsvDfSNCfygnjCbrZflshWA7Ma17lxk/ovce2uVWNPs/cAsd2EaBw5S3MBmyUG0QZEEDZwgNzN4axS/QCGONHnqGrqGPTcMLqWgaXIxyrIdUe7cwG2QKBgQDOtghcXeMDyttu4w2/lYcGu2JDFdvMVh0vSq/u0g2z1utLkxainrpv2Mpr9jw25Qo64wYiNUfaxbTViwev6y1cou9Ejwx8qnxHCF64HgcsFKcJ8v3SK89L+xihO5J+4UKq0Vjys/ujKb/wZcVf0GZ172jZhTfyMlNGwQOwhbaivQKBgQCXuZvYlXpAYJa369uPQHXqGyHkBV+cAgGNrrmCraoC+KCA5brsUKLVw+gqUH9NBSaTBEKnIfH5bUtnuWCNlGyTY/tcPYh/nvNl2evytPVzeJ0b9tmoYz737gRHjwQQFjFbZoDOo5pi6jZ9BoJ3RhLUiKmayfUleIRmQrzE7hdPIQKBgAWf9jHsyoNSlGxVCYfPjsuFZ7cmW7IS2xpSja6xJF9/BPq+nTvefUu+GeEiUwlmByGvOZbfrUfjpdkbH+g4RZSMvZGk/aiz5fcRwR/tpqYxd1/98pUa4TNgQEB+12HuOlFrVx4vY4UhVgoSwq0PEfYLymC9q0ZhKthss4qMCxLo"
-
-
+---
+jwt:
+  key: "8520b3d2d13b0d8ace53d6a81f1ca25c834234234234"
+  ISSUER: "SK-00000.work"
 ---
 spring:
   ai:
@@ -53,21 +54,15 @@ gemini:
     key: AIzaSyC0zxWXdahdZa4sJhT_ehe7p_1_e_DA2nI
     BASE_URL: https://generativelanguage.googleapis.com
 ---
-#spring:
-#  servlet:
-#    multipart:
-#      max-file-size: 10GB
+
 spring:
   servlet:
     multipart:
-      max-file-size: 300MB
-      max-request-size: 300MB
+      max-file-size: 900MB
+      max-request-size: 900MB
+
 ---
-jwt:
-  key: "8520b3d2d13b0d8ace53d6a81f1ca25c834234234234"
-  ISSUER: "SK-00000.work"
----
-wx:
-  AppID: wx650f5f5c4c6999a9
-  AppSecret: e24be7f8d9c00e0af39229976a5b1675
+#wx:
+#  AppID: wx650f5f5c4c6999a9
+#  AppSecret: e24be7f8d9c00e0af39229976a5b1675
 ---

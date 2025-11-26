@@ -4,6 +4,7 @@ package com.example.spring_utioy_v1.utio.config;
 import com.example.spring_utioy_v1.utio.Code.Result;
 import com.example.spring_utioy_v1.utio.Code.ResultCode;
 import com.example.spring_utioy_v1.utio.service.ReturnException;
+import com.example.spring_utioy_v1.utio.service.Return_NoShowException;
 import com.example.spring_utioy_v1.utio.service.TokenException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -55,6 +56,20 @@ public class ExceptionConfig {
         System.err.println("自定义异常返回>:"+e);
         return Result.failure(ResultCode.SUCCESS_NO,"错误:"+e.getMessage());
     }
+
+
+
+    /**
+     *
+     * 自定义异常/并且不需要弹窗 返回  -10
+     */
+    @ExceptionHandler(value = Return_NoShowException.class)
+    @ResponseBody
+    public Result RuntimeExceptionHandler(Return_NoShowException e){
+        System.err.println("自定义异常返回(非弹窗)>:"+e);
+        return Result.failure(ResultCode.SUCCESS_NO_Show,"错误:"+e.getMessage());
+    }
+
 
 
     /**

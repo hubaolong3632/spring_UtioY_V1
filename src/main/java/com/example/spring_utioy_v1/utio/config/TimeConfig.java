@@ -1,7 +1,9 @@
 package com.example.spring_utioy_v1.utio.config;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * 定时任务执行类（使用配置的周期）
@@ -19,6 +21,18 @@ public class TimeConfig {
 //
 //
 //    }
+
+
+//    /**
+//     * 例：开始启动执行一次后续每30分钟执行一次
+//     * Cron 语法：秒 分 时 日 月 周 年（年可选）
+//     */
+//    @PostConstruct // 启动后立即执行一次
+//    @Scheduled(cron = "0 */30 * * * ?")
+//    public void cronTask() {
+//        System.out.println("30分钟执行一次");
+//    }
+
 
 
 
