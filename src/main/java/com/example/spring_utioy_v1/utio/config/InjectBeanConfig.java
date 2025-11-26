@@ -2,13 +2,14 @@ package com.example.spring_utioy_v1.utio.config;
 
 import com.example.spring_utioy_v1.utio.Code.Config;
 import com.example.spring_utioy_v1.utio.UtioClass.JwtUtio;
+import com.example.spring_utioy_v1.utio.UtioY;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
+import java.util.List;
 
 
 /**
@@ -29,19 +30,43 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 
-
+    //配置jwt注入
     @Bean("jwt")
     public Boolean jwt(@Value("${jwt.secret:}")String secret, @Value("${jwt.issuer:}")String issuer){
         JwtUtio.setJWTKey(secret,issuer);
         return true;
     }
 
-
-    @Override //图片放置
+    //配置图片放置
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         System.out.println("文件存储默认位置:" + Config.currentPath);
         registry.addResourceHandler("/**")  //匹配路径
                 .addResourceLocations("file:" + Config.currentPath);
+    }
+
+
+    @Resource
+    private JWTFilter myInterceptor;
+
+    @Resource
+    private InterceptorConfig interceptorConfig;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        InterceptorRegistration interceptor = registry.addInterceptor(myInterceptor);
+
+        // 添加拦截路径
+        if (interceptorConfig.getIncludePaths() != null && !interceptorConfig.getIncludePaths().isEmpty()) {
+            interceptor.addPathPatterns(interceptorConfig.getIncludePaths());
+            System.out.println("拦截路径: " + interceptorConfig.getIncludePaths());
+        }
+
+        // 添加排除路径
+        if (interceptorConfig.getExcludePaths() != null && !interceptorConfig.getExcludePaths().isEmpty()) {
+            interceptor.excludePathPatterns(interceptorConfig.getExcludePaths());
+            System.out.println("排除路径: " + interceptorConfig.getExcludePaths());
+        }
     }
 
 }

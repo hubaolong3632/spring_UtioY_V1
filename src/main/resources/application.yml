@@ -66,3 +66,13 @@ spring:
 #  AppID: wx650f5f5c4c6999a9
 #  AppSecret: e24be7f8d9c00e0af39229976a5b1675
 ---
+# JWT拦截器配置
+interceptor:
+  include-paths:
+    - /api/**
+  exclude-paths:
+    - /api/auth/login
+    - /api/auth/login_user
+    - /api/file/file
+    - /api/file/image
+---
