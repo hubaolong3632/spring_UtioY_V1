@@ -76,3 +76,8 @@ interceptor:
     - /api/file/file
     - /api/file/image
 ---
+config:
+  fileUrl: "xxxxx111"
+  current-path: "1234"
+  currentp-ath1: "1234"
+---

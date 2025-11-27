@@ -1,34 +1,9 @@
-1.依赖导入
 
- <!--解决找不到 JWT-->
- <dependency>
-     <groupId>javax.xml.bind</groupId>
-     <artifactId>jaxb-api</artifactId>
-     <version>2.3.1</version>
- </dependency>
-
-<!-- jwt 权限jwt-->
- <dependency>
-     <groupId>io.jsonwebtoken</groupId>
-     <artifactId>jjwt</artifactId>
-     <version>0.9.0</version>
- </dependency>
-
-
-<!-- jsoup 网络请求-->
-<dependency>
-    <groupId>org.jsoup</groupId>
-    <artifactId>jsoup</artifactId>
-    <version>1.11.2</version>
-</dependency>
-
-<!-- fastjson2 json格式分析-->
- <dependency>
-     <groupId>com.alibaba.fastjson2</groupId>
-     <artifactId>fastjson2</artifactId>
-     <version>2.0.43</version>
- </dependency>
-
+1.增加自动注入异步支持和数据库查询地方
+@SpringBootApplication
+@EnableScheduling //自动注入yml
+@EnableAsync // 开启异步支持
+@MapperScan("com.example.spring_utioy_v1.mapper")
 
 2.配置文件 (配置jwt)
  jwt:

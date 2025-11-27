@@ -1,9 +1,11 @@
 package com.example.spring_utioy_v1.utio.config;
 
 import com.example.spring_utioy_v1.utio.Code.Config;
+import com.example.spring_utioy_v1.utio.Log;
 import com.example.spring_utioy_v1.utio.UtioClass.JwtUtio;
 import com.example.spring_utioy_v1.utio.UtioY;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,6 +38,16 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
         JwtUtio.setJWTKey(secret,issuer);
         return true;
     }
+
+
+
+    //其他文件注入
+    @Bean("text")
+    public Boolean text(Config interc){
+        Log.info("输入"+UtioY.JSON(interc));
+        return true;
+    }
+
 
     //配置图片放置
     @Override

@@ -16,7 +16,7 @@ public class UserMsgModel {
 
     public UserMsgModel() {}
 
-    public void log() {
-        System.out.println("id: " + id + " name: " + name + " password: " + password + " haha: " + haha);
+    public void log(String xx) {
+        System.out.println("id: " + xx + " name: " + name + " password: " + password + " haha: " + haha);
     }
 }

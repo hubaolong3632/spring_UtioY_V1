@@ -137,8 +137,8 @@ public class ApiUtio {
      */
     private static void JSONPrintf(String json){
         System.out.println("json输出:"+json);
-        JSONObject jsonObject = JSON.parseObject(json);
-        Integer errcode = jsonObject.getInteger("errcode");
+//        JSONObject jsonObject = JSON.parseObject(json);
+//        Integer errcode = jsonObject.getInteger("errcode");
 
 //        if(errcode!=0){
 //            if(errcode==40029){
