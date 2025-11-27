@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Result implements Serializable {
 
     private static final long serialVersionUID = -3948389268046368059L;
-
+//
     /**状态码*/
     private Integer code;
 
