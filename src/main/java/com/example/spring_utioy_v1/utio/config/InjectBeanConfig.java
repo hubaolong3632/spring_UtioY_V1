@@ -45,6 +45,8 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
     @Bean("text")
     public Boolean text(Config interc){
         Log.info("输入"+UtioY.JSON(interc));
+        Log.error("输入"+UtioY.JSON(interc));
+        Log.debug("输入"+UtioY.JSON(interc));
         return true;
     }
 

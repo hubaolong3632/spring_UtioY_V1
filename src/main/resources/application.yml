@@ -80,4 +80,11 @@ config:
   fileUrl: "xxxxx111"
   current-path: "1234"
   currentp-ath1: "1234"
+  # 日志配置
+  log:
+    enabled: true              # 是否启用日志输出
+    console-output: true       # 是否输出到控制台
+    file-output: true          # 是否保存到文件
+    flush-interval-seconds: 2   # 每隔多少秒保存一次
+    batch-size: 100             # 超过多少条保存一次
 ---
