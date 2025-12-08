@@ -144,10 +144,16 @@ public class Log {
         if (!Config.LOG_ENABLED) {
             return;
         }
+        
+        // 检查该日志级别是否启用
+        Boolean levelEnabled = Config.LOG_LEVELS_ENABLED.get(level.name());
+        if (levelEnabled == null || !levelEnabled) {
+            return; // 该级别未启用，直接返回
+        }
 
         // 根据配置决定是否输出到控制台
         if (Config.LOG_CONSOLE_OUTPUT) {
-            if (level == LogLevel.ERROR) {
+            if (level == LogLevel.ERROR || level == LogLevel.SEVERE) {
                 System.err.println(msg);
             } else {
                 System.out.println(msg);
@@ -232,5 +238,33 @@ public class Log {
      */
     public static void debug(String msg) {
         addLog(LogLevel.DEBUG, msg);
+    }
+
+    /**
+     * 记录WARN级别日志（带type参数）
+     */
+    public static void warn(String msg, String type) {
+        addLog(LogLevel.WARN, msg, type);
+    }
+
+    /**
+     * 记录WARN级别日志（不带type参数）
+     */
+    public static void warn(String msg) {
+        addLog(LogLevel.WARN, msg);
+    }
+
+    /**
+     * 记录SEVERE级别日志（严重警告，带type参数）
+     */
+    public static void severe(String msg, String type) {
+        addLog(LogLevel.SEVERE, msg, type);
+    }
+
+    /**
+     * 记录SEVERE级别日志（严重警告，不带type参数）
+     */
+    public static void severe(String msg) {
+        addLog(LogLevel.SEVERE, msg);
     }
 }

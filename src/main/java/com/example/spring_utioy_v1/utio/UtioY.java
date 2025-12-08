@@ -153,12 +153,17 @@ public class UtioY {
     }
 
 
+
+//    在加一个saveDao，然后他需要也是给内容，类别，等级（log,error，info,severe）
+//    然后保存到数据库，数据库字段对应的id,类别，内容，等级 ，创建时间
+//    使用mybatis 在utio层里面些他的语句 ，也要给我对应的数据库表
+
     /**
      * 获取用户真实IP地址（支持代理）
      * @param request HttpServletRequest
      * @return 用户IP地址
      */
-    public static String getClientIP(HttpServletRequest request) {
+    public static String getClient_IP(HttpServletRequest request) {
      return IPUtio.getClientIP(request);
     }
 

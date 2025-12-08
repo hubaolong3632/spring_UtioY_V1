@@ -10,3 +10,8 @@
    secret: 8520b3d2d13b0d8ace53d6a81f1ca25c834234234234
    issuer: SK-00000.work
 
+
+
+
+创建数据库:utio
+引入数据库    sys_log.sql

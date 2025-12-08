@@ -47,6 +47,8 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
         Log.info("输入"+UtioY.JSON(interc));
         Log.error("输入"+UtioY.JSON(interc));
         Log.debug("输入"+UtioY.JSON(interc));
+        Log.severe("错误");
+        Log.info("错误","ss");
         return true;
     }
 
