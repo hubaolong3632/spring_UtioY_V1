@@ -12,6 +12,7 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 请求处理
@@ -123,6 +124,7 @@ public class ApiUtio {
 
 //        请求头配置
         if(header!=null){
+//            UUID.randomUUID()
             Map<String, String> data_map = header.getData();
             for (String key : data_map.keySet()){
                 connection.header(key,data_map.get(key));
