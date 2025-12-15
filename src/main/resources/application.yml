@@ -1,5 +1,5 @@
 server:
-  port: 10004
+  port: 10008
 ---
 ---
 spring:
@@ -11,11 +11,12 @@ spring:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
     #druid数据库连接池
     type: com.alibaba.druid.pool.DruidDataSource
+
 ---
 # mybatis-plus相关配置
 mybatis-plus:
-#  mapper-locations: classpath*:/mapper/**/*.xml  # 查询的地址
   mapper-locations: classpath*:/mapper/*.xml  # 查询的地址
+#  mapper-locations: classpath*:/mapper/*.xml  # 查询的地址
 #   以下配置均有默认值,可以不设置
   configuration:
     # 开启自动驼峰命名下划线转大写

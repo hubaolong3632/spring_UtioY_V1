@@ -1,0 +1,2 @@
+2025-12-12 17:58:48 | DEBUG |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-12 17:59:06 | DEBUG |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}

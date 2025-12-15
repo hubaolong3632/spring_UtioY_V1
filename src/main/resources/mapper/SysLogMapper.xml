@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.UtioyV1.utio.mapper.UtioMapper">
+
+
+
+    <!-- 批量插入日志：insert_log(List<LogEntry> logs) -->
+    <insert id="save_log" parameterType="java.util.List">
+        INSERT INTO sys_log (
+        type,
+        content,
+        user,
+        level
+        ) VALUES
+        <!-- 遍历List集合，拼接多条值 -->
+        <foreach collection="list" item="log" separator=",">
+            (
+            #{log.type},
+            #{log.content},
+            #{log.user},
+            #{log.level.value} <!-- 枚举转字符串：取枚举名称（INFO/ERROR） -->
+            )
+        </foreach>
+    </insert>
+</mapper>

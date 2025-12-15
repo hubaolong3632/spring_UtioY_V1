@@ -1,0 +1,106 @@
+2025-12-08 13:29:58 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2}}
+2025-12-08 13:29:56 | INFO |  | xxxx
+2025-12-08 13:30:18 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2}}
+2025-12-08 13:30:16 | INFO |  | xxxx
+2025-12-08 13:44:28 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 13:44:26 | INFO |  | xxxx
+2025-12-08 13:44:28 | INFO | ss | 错误
+2025-12-08 14:45:34 | INFO |  | xxxx
+2025-12-08 14:45:37 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 14:45:37 | INFO | ss | 错误
+2025-12-08 16:12:37 | INFO |  | xxxx
+2025-12-08 16:13:54 | INFO |  | xxxx
+2025-12-08 16:16:33 | INFO |  | xxxx
+2025-12-08 16:18:38 | INFO |  | xxxx
+2025-12-08 16:18:41 | INFO | ss | 错误
+2025-12-08 16:18:41 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:19:04 | INFO | ss | 错误
+2025-12-08 16:19:02 | INFO |  | xxxx
+2025-12-08 16:19:04 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:19:53 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:19:53 | INFO | ss | 错误
+2025-12-08 16:19:51 | INFO |  | xxxx
+2025-12-08 16:20:42 | INFO |  | xxxx
+2025-12-08 16:20:45 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:20:45 | INFO | ss | 错误
+2025-12-08 16:20:57 | INFO |  | xxxx
+2025-12-08 16:20:59 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:20:59 | INFO | ss | 错误
+2025-12-08 16:21:06 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:21:06 | INFO | ss | 错误
+2025-12-08 16:21:04 | INFO |  | xxxx
+2025-12-08 16:22:08 | INFO | ss | 错误
+2025-12-08 16:22:08 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:22:32 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:22:32 | INFO | ss | 错误
+2025-12-08 16:22:30 | INFO |  | xxxx
+2025-12-08 16:24:50 | INFO |  | xxxx
+2025-12-08 16:24:52 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:24:52 | INFO | ss | 错误
+2025-12-08 16:25:12 | INFO | ss | 错误
+2025-12-08 16:25:12 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:25:10 | INFO |  | xxxx
+2025-12-08 16:26:11 | INFO | ss | 错误
+2025-12-08 16:26:11 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:26:09 | INFO |  | xxxx
+2025-12-08 16:27:21 | INFO |  | xxxx2025-12-08 16:27:23 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+
+2025-12-08 16:27:23 | INFO | ss | 错误
+2025-12-08 16:29:30 | INFO |  | xxxx
+2025-12-08 16:29:32 | INFO | ss | 错误
+2025-12-08 16:29:32 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:31:23 | INFO |  | xxxx
+2025-12-08 16:31:25 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:31:25 | INFO | ss | 错误
+2025-12-08 16:37:06 | INFO |  | xxxx
+2025-12-08 16:38:10 | INFO |  | xxxx
+2025-12-08 16:39:34 | INFO |  | xxxx
+2025-12-08 16:40:36 | INFO |  | xxxx
+2025-12-08 16:41:48 | INFO |  | xxxx
+2025-12-08 16:45:09 | INFO |  | xxxx
+2025-12-08 16:47:47 | INFO |  | xxxx
+2025-12-08 16:48:46 | INFO |  | xxxx
+2025-12-08 16:48:48 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:48:48 | INFO | ss | 错误
+2025-12-08 16:50:46 | INFO |  | xxxx
+2025-12-08 16:50:48 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:50:48 | INFO | ss | 错误
+2025-12-08 16:53:19 | INFO |  | xxxx
+2025-12-08 16:53:22 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 16:53:22 | INFO | ss | 错误
+2025-12-08 16:53:42 | INFO |  | xxxx
+2025-12-08 16:54:40 | INFO |  | xxxx
+2025-12-08 16:56:19 | INFO |  | xxxx
+2025-12-08 16:57:34 | INFO |  | xxxx
+2025-12-08 16:57:55 | INFO |  | xxxx
+2025-12-08 16:58:38 | INFO |  | xxxx
+2025-12-08 17:01:32 | INFO |  | xxxx
+2025-12-08 17:06:04 | INFO |  | xxxx
+2025-12-08 17:06:31 | INFO |  | xxxx
+2025-12-08 17:06:53 | INFO |  | xxxx
+2025-12-08 17:07:03 | INFO |  | xxxx
+2025-12-08 17:08:02 | INFO |  | xxxx
+2025-12-08 17:10:40 | INFO |  | xxxx
+2025-12-08 17:12:03 | INFO |  | xxxx
+2025-12-08 17:12:17 | INFO |  | xxxx
+2025-12-08 17:13:22 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 17:13:22 | INFO | ss | 错误
+2025-12-08 17:13:20 | INFO |  | xxxx
+2025-12-08 17:14:08 | INFO |  | xxxx
+2025-12-08 17:15:38 | INFO |  | xxxx
+2025-12-08 17:16:09 | INFO |  | xxxx
+2025-12-08 17:16:51 | INFO |  | xxxx
+2025-12-08 17:17:07 | INFO |  | xxxx
+2025-12-08 17:18:40 | INFO |  | xxxx
+2025-12-08 17:18:55 | INFO |  | xxxx
+2025-12-08 17:20:11 | INFO |  | xxxx
+2025-12-08 17:21:23 | INFO |  | xxxx
+2025-12-08 17:23:01 | INFO |  | xxxx
+2025-12-08 17:23:24 | INFO |  | xxxx
+2025-12-08 17:24:04 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 17:24:04 | INFO | ss | 错误
+2025-12-08 17:24:02 | INFO |  | xxxx
+2025-12-08 17:39:22 | INFO |  | xxxx
+2025-12-08 17:39:24 | INFO | ss | 错误
+2025-12-08 17:39:24 | INFO |  | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":100,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":2,"keepFiles":30,"levels":{"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-08 17:40:33 | INFO |  | xxxx
