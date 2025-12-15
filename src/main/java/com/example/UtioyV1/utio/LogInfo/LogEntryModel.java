@@ -1,6 +1,5 @@
 package com.example.UtioyV1.utio.LogInfo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,7 +8,7 @@ import java.util.Date;
  * 日志条目类
  */
 @Data
-public class LogEntry {
+public class LogEntryModel {
 
     /**
      * 主键id
@@ -21,6 +20,10 @@ public class LogEntry {
      * 日志等级
      */
     private  LogLevel level;
+
+    /**
+     * 信息/内容
+     */
     private  String message;
 
     /**
@@ -35,12 +38,6 @@ public class LogEntry {
 
 
     /**
-     * 内容
-     */
-    private String content;
-
-
-    /**
      * 创建时间
      */
     private Date create_time;
@@ -49,14 +46,24 @@ public class LogEntry {
 
 
     
-    public LogEntry(LogLevel level, String message, String type) {
+    public LogEntryModel(LogLevel level, String message, String type) {
         this.level = level;
         this.message = message;
         this.type = type;
         this.create_time = new Date();
     }
 
-    public LogEntry() {
+
+    public LogEntryModel(LogLevel level, String message, String type,String user) {
+        this.level = level;
+        this.message = message;
+        this.type = type;
+        this.create_time = new Date();
+        this.user = user;
+
+    }
+
+    public LogEntryModel() {
     }
 }
 

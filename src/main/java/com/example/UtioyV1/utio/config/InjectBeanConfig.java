@@ -42,10 +42,17 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
     @Bean("text")
     public Boolean text(Config interc){
         Log.info("输入"+UtioY.JSON(interc));
+        Log.info("输入"+UtioY.JSON(interc));
         Log.error("输入"+UtioY.JSON(interc));
         Log.debug("输入"+UtioY.JSON(interc));
         Log.severe("错误");
         Log.info("错误","ss");
+        Log.info("错误","ss");
+        Log.dao_save("t1","你好","13");
+
+//        for(int i=0;i<10000;i++){
+//            Log.dao_save("t1","你好","13");
+//        }
         return true;
     }
 

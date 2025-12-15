@@ -2,6 +2,7 @@ package com.example.UtioyV1.utio;
 
 
 import com.example.UtioyV1.utio.Code.Config;
+import com.example.UtioyV1.utio.LogInfo.LogEntryModel;
 import com.example.UtioyV1.utio.UtioClass.*;
 import com.example.UtioyV1.utio.model.*;
 
@@ -38,6 +39,15 @@ public class UtioY {
       return   JsonUtio.JSON_COPY(src);
     }
 
+
+//    /**
+//     * 深拷贝(对集合进行拷贝)
+//     */
+//    public static <T> List<T> JSON_COPY1(List<T> src) throws IOException, ClassNotFoundException{
+//        // 提前指定容量，避免addAll时扩容
+//        List<T> batch = new ArrayList<>(src);
+//        return  batch;
+//    }
 
     /**
      * 更具提供的头和请求内容进行生成jwt

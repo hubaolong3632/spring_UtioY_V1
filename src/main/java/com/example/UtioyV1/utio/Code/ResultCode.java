@@ -20,7 +20,7 @@ public enum ResultCode {
     EXCEPTI_ON(-1, "系统异常"),
 
     /* 成功状态码 */
-    SUCCESS(200, "成功"),
+    SUCCESS(1, "成功"),
 
 
 

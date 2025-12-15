@@ -10,7 +10,7 @@
     <insert id="save_log" parameterType="java.util.List">
         INSERT INTO sys_log (
         type,
-        content,
+        message,
         user,
         level
         ) VALUES
@@ -18,7 +18,7 @@
         <foreach collection="list" item="log" separator=",">
             (
             #{log.type},
-            #{log.content},
+            #{log.message},
             #{log.user},
             #{log.level.value} <!-- 枚举转字符串：取枚举名称（INFO/ERROR） -->
             )

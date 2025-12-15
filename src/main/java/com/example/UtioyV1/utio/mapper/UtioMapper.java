@@ -1,7 +1,7 @@
 package com.example.UtioyV1.utio.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.UtioyV1.utio.LogInfo.LogEntry;
+import com.example.UtioyV1.utio.LogInfo.LogEntryModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,9 +14,9 @@ import java.util.List;
 * @Entity com.example.UtioyV1.model.SysLog
 */
 @Mapper
-public interface UtioMapper extends BaseMapper<LogEntry> {
+public interface UtioMapper extends BaseMapper<LogEntryModel> {
 
-    Integer save_log(@Param("list") List<LogEntry> log);
+    Integer save_log(@Param("list") List<LogEntryModel> log);
 
 }
 

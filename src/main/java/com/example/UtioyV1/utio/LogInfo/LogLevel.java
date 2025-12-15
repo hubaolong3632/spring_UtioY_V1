@@ -8,7 +8,8 @@ public enum LogLevel {
     ERROR("ERROR"),
     DEBUG("DEBUG"),
     WARN("WARN"),
-    SEVERE("SEVERE");
+    SEVERE("SEVERE"),
+    DAO("DAO");
 
 
     // 公开的属性，MyBatis 可直接访问（无需反射私有字段）

@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling //自动注入yml
-@EnableAsync // 开启异步支持
-//@MapperScan("com.example.*.mapper")
+
+@MapperScan("com.example.*.mapper")
+
 public class SpringUtioYV1Application {
 
     public static void main(String[] args) {

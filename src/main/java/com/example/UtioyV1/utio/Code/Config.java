@@ -35,6 +35,7 @@ public class Config {
         LOG_LEVELS_ENABLED.put("DEBUG", true);
         LOG_LEVELS_ENABLED.put("WARN", true);
         LOG_LEVELS_ENABLED.put("SEVERE", true);
+        LOG_LEVELS_ENABLED.put("DAO", true);
     }
 
     // 非 static 字段（可以被 JSON 序列化）
@@ -81,6 +82,10 @@ public class Config {
                 }
                 if (log.getLevels().getSevere() != null) {
                     Config.LOG_LEVELS_ENABLED.put("SEVERE", log.getLevels().getSevere());
+
+                }if (log.getLevels().getDao() != null) {
+                    Config.LOG_LEVELS_ENABLED.put("DAO", log.getLevels().getDao());
+
                 }
             }
         }
@@ -106,5 +111,6 @@ public class Config {
         private Boolean debug;   // DEBUG级别是否启用
         private Boolean warn;    // WARN级别是否启用
         private Boolean severe;  // SEVERE级别是否启用
+        private Boolean dao;  // dao数据库级别是否启用
     }
 }

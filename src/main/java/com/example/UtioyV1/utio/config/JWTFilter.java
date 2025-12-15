@@ -7,7 +7,10 @@ import com.example.UtioyV1.utio.model.JWTDatasModel;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.PrintWriter;
 
 @Component
+@EnableScheduling //自动注入yml
+@EnableAsync // 开启异步支持
+@MapperScan("com.example.*.utio.mapper")
 public class JWTFilter implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

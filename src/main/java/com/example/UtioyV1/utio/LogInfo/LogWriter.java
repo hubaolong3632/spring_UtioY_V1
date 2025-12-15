@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -37,11 +36,11 @@ public class LogWriter {
     /**
      * 批量写入日志到文件
      */
-    public static void writeBatchToFile(List<LogEntry> entries) {
+    public static void writeBatchToFile(List<LogEntryModel> entries) {
         // 按日志级别、年份、月份和日期分组
-        Map<String, List<LogEntry>> groupedEntries = new ConcurrentHashMap<>();
+        Map<String, List<LogEntryModel>> groupedEntries = new ConcurrentHashMap<>();
         
-        for (LogEntry entry : entries) {
+        for (LogEntryModel entry : entries) {
 
             LocalDateTime dateTime = LocalDateTime.ofInstant(
                     entry.getCreate_time().toInstant(),
@@ -63,13 +62,13 @@ public class LogWriter {
         }
         
         // 按文件分组写入
-        for (Map.Entry<String, List<LogEntry>> group : groupedEntries.entrySet()) {
+        for (Map.Entry<String, List<LogEntryModel>> group : groupedEntries.entrySet()) {
             String fileKey = group.getKey();
-            List<LogEntry> fileEntries = group.getValue();
+            List<LogEntryModel> fileEntries = group.getValue();
             
             try {
                 BufferedWriter writer = getWriter(fileKey);
-                for (LogEntry entry : fileEntries) {
+                for (LogEntryModel entry : fileEntries) {
 //                    java.time.Instant instant = java.time.Instant.ofEpochMilli(entry.getTimestamp());
 //                    LocalDateTime dateTime = LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
                     LocalDateTime dateTime = LocalDateTime.ofInstant(
