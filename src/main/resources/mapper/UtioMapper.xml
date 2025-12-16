@@ -12,7 +12,9 @@
         type,
         message,
         user,
-        level
+        level,
+        reserved,
+        create_time
         ) VALUES
         <!-- 遍历List集合，拼接多条值 -->
         <foreach collection="list" item="log" separator=",">
@@ -20,7 +22,9 @@
             #{log.type},
             #{log.message},
             #{log.user},
-            #{log.level.value} <!-- 枚举转字符串：取枚举名称（INFO/ERROR） -->
+            #{log.level.value}, <!-- 枚举转字符串：取枚举名称（INFO/ERROR） -->
+            #{log.reserved},
+            #{log.create_time}
             )
         </foreach>
     </insert>

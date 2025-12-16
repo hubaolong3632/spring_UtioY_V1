@@ -1,5 +1,15 @@
-server:
-  port: 10008
+#同款环境
+
+spring:
+  application:
+    name: springboot-profile
+  profiles:
+    active: v2
+---
+
+#---
+#server:
+#  port: 10008
 ---
 ---
 spring:
@@ -94,5 +104,5 @@ config:
       debug: true               # DEBUG级别是否启用
       warn: true                # WARN级别是否启用
       severe: true              # SEVERE级别是否启用
-      dao: true              # 数据库保存是否启用
+      dao: true                 # 数据库保存是否启用
 ---

@@ -58,7 +58,7 @@ public class TimeConfig {
     private UtioMapper utioMapper;
 
     @Scheduled(cron = "*/5 * * * * ?")
-    public void cronTask() {
+    public void LogTask() {
 
 //        batch.addAll(dao_list)  //list集合拷贝
         //        判断要保存到数据库的内容是否为空
@@ -66,11 +66,9 @@ public class TimeConfig {
 //        System.out.println(!LogQueue.dao_list.isEmpty());
 //        System.out.println(LogQueue.dao_list.size());
        if(!LogQueue.dao_list.isEmpty()) {
-
            List<LogEntryModel> batch = new ArrayList<>(LogQueue.dao_list); //拷贝一份新的
            LogQueue.dao_list.clear();
            utioMapper.save_log(batch); //批量保存数据库
-
        }
 
 //        Log.debug("保存数据库成功");

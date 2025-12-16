@@ -5,7 +5,10 @@ import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioClass.JwtUtio;
 import com.example.UtioyV1.utio.UtioY;
 import jakarta.annotation.Resource;
+import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -15,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.*;
  * 依赖注入
  */
 @Configuration
-public class InjectBeanConfig  implements WebMvcConfigurer {
+public class InjectBeanConfig  implements WebMvcConfigurer, CommandLineRunner {
 
 
     //允许所有请求跨域
@@ -39,16 +42,18 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
 
 
     //其他文件注入
-    @Bean("text")
+    @Bean("text1")
     public Boolean text(Config interc){
-        Log.info("输入"+UtioY.JSON(interc));
+//        Log.info("输入"+UtioY.JSON(interc));
         Log.info("输入"+UtioY.JSON(interc));
         Log.error("输入"+UtioY.JSON(interc));
         Log.debug("输入"+UtioY.JSON(interc));
+        Log.warn("输出保存");
         Log.severe("错误");
-        Log.info("错误","ss");
-        Log.info("错误","ss");
-        Log.dao_save("t1","你好","13");
+        Log.dao_save("保存到数据库");
+//        Log.info("错误","ss");
+//        Log.info("错误","ss");
+
 
 //        for(int i=0;i<10000;i++){
 //            Log.dao_save("t1","你好","13");
@@ -79,14 +84,35 @@ public class InjectBeanConfig  implements WebMvcConfigurer {
         // 添加拦截路径
         if (interceptorConfig.getIncludePaths() != null && !interceptorConfig.getIncludePaths().isEmpty()) {
             interceptor.addPathPatterns(interceptorConfig.getIncludePaths());
-            System.out.println("拦截路径: " + interceptorConfig.getIncludePaths());
+            Log.debug("拦截路径: " + interceptorConfig.getIncludePaths());
         }
 
         // 添加排除路径
         if (interceptorConfig.getExcludePaths() != null && !interceptorConfig.getExcludePaths().isEmpty()) {
             interceptor.excludePathPatterns(interceptorConfig.getExcludePaths());
-            System.out.println("排除路径: " + interceptorConfig.getExcludePaths());
+            Log.debug("排除路径: " + interceptorConfig.getExcludePaths());
         }
+    }
+
+
+    @Autowired
+    private Environment environment;
+
+    // 应用启动完成后执行的逻辑
+    @Override
+    public void run(String... args) throws Exception {
+        // 获取激活的配置文件
+        String[] activeProfiles = environment.getActiveProfiles();
+        String activeProfilesStr = activeProfiles.length > 0
+                ? String.join(",", activeProfiles)
+                : "默认配置";
+
+// 获取端口号（从配置中读取，默认8080）
+        String port = environment.getProperty("server.port", "8080");
+
+// 输出规则：文字（无颜色） + 配置值/端口值（加粗绿色）
+      Log.info("配置:" + "\u001B[1;32m" + activeProfilesStr + "\u001B[0m" + "   端口:" + "\u001B[1;32m" + port + "\u001B[0m");
+
     }
 
 }

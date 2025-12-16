@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 @EnableScheduling //自动注入yml
 @EnableAsync // 开启异步支持
 @MapperScan("com.example.*.utio.mapper")
+@MapperScan("com.example.*.mapper")
 public class JWTFilter implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

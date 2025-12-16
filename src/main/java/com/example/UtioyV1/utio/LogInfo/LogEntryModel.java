@@ -38,6 +38,11 @@ public class LogEntryModel {
 
 
     /**
+     * 预留字段
+     */
+    private String reserved;
+
+    /**
      * 创建时间
      */
     private Date create_time;
@@ -60,6 +65,16 @@ public class LogEntryModel {
         this.type = type;
         this.create_time = new Date();
         this.user = user;
+
+    }
+
+    public LogEntryModel(LogLevel level, String message, String type,String user,String reserved) {
+        this.level = level;
+        this.message = message;
+        this.type = type;
+        this.create_time = new Date();
+        this.user = user;
+        this.reserved = reserved;
 
     }
 

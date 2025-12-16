@@ -39,33 +39,6 @@
 
 
 
-<!--        &lt;!&ndash;druid数据库驱动&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>druid</artifactId>-->
-<!--            <version>1.2.4</version>-->
-<!--        </dependency>-->
-
-
-<!--        &lt;!&ndash;mybatis&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>-->
-<!--            <version>3.5.7</version>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash; mysql的jar包&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--            <version>8.0.26</version>-->
-<!--        </dependency>-->
-
-
-
-
-
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -177,13 +150,84 @@
 
     </dependencies>
 
+
+
+
+
+    <!--本地环境-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <package.environment>dev</package.environment>
+            </properties>
+
+        </profile>
+
+<!--        服务器正式环境-->
+        <profile>
+            <id>v1</id>
+            <properties>
+                <package.environment>v1</package.environment>
+            </properties>
+
+            <!-- 是否默认 true表示默认-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <!-- 服务器测试环境 -->
+            <id>v2</id>
+            <properties>
+                <package.environment>v2</package.environment>
+            </properties>
+        </profile>
+    </profiles>
+
+
+
+<!-- 配置打包环境-->
     <build>
         <plugins>
+            <!-- 1. 配置 Surefire 插件控制测试跳过（核心） -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <skipTests>true</skipTests> <!-- 跳过测试执行（等价于 -DskipTests） -->
+                    <skip>true</skip>  <!--跳过测试编译-->
+                </configuration>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.yml</include>
+                    <include>application-${package.environment}.yml</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
+
+
+
+
+
+
+
+
 
 </project>

@@ -13,6 +13,12 @@ public class DateUtio {
         String customDateStr = dateFormat.format(new Date());
         return customDateStr; //返回时间
     }
+
+    public static String dateDay_String(Date date){ //获取当前在线时间
+        String customDateStr = dateFormat.format(date);
+        return customDateStr; //返回时间
+    }
+
     public static LocalDateTime dateDay_Date(){ //获取当前在线时间
         LocalDateTime localDateTime = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         return localDateTime; //返回时间

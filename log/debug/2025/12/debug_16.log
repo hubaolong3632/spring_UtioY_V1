@@ -1,0 +1,164 @@
+2025-12-16 10:41:40 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 10:44:57 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 10:47:24 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 10:51:21 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:06:29 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:09:38 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:11:45 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:22:11 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:29:14 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:39:02 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:39:17 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:46:43 | DEBUG | debug | ����{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 11:55:05 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 13:57:43 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 14:01:14 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:01:14 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:02:09 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:02:09 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:02:29 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:02:29 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:04:14 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:04:14 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:05:52 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:05:52 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:06:37 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:06:37 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:12:19 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:12:19 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:13:57 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:13:57 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:16:18 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:16:18 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:19:25 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 14:19:25 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:19:25 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:19:47 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 14:19:48 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:19:48 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:28:32 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 14:28:32 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:28:32 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 14:30:10 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 14:30:10 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 14:30:10 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:41:51 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:41:51 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:41:51 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:45:38 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:45:38 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:45:38 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:46:22 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:46:22 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:46:22 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:47:13 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:47:13 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:47:13 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:48:55 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:48:55 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:48:55 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:49:11 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:49:11 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:49:11 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:50:02 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:50:02 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:50:02 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:50:54 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:50:54 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:50:54 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:57:48 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:57:48 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:57:48 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:58:19 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:58:19 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:58:19 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:59:22 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:59:22 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:59:22 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:59:39 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:59:39 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:59:39 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 15:59:49 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 15:59:49 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 15:59:49 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:00:53 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:00:53 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:00:53 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:01:11 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:01:11 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:01:11 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:01:26 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:01:26 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:01:26 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:04:01 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:04:01 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:04:01 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:09:13 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:09:13 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:09:13 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:09:40 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:09:40 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:09:40 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:10:46 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:10:46 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:10:46 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:11:45 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:11:45 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:11:45 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:13:16 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:13:16 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:13:16 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:13:52 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:13:52 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:13:52 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:15:33 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:15:33 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:15:33 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:15:53 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:15:53 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:15:53 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:16:49 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:16:49 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:16:49 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:18:05 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":false,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:18:05 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:18:05 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:18:14 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":false,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:18:14 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:18:14 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:18:44 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:18:44 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:18:44 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:19:02 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:19:02 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:19:02 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:19:30 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:19:30 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:19:30 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:19:44 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:19:44 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:19:44 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:19:59 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:20:00 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:20:00 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:20:29 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:20:29 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:20:29 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:21:39 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:21:39 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:21:39 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:21:51 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:21:51 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:21:51 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:21:58 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:21:58 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:21:58 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:22:06 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:22:06 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:22:06 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:22:36 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:22:36 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:22:36 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
+2025-12-16 16:22:58 | DEBUG | debug | 输入{"currentPath1":"files","fileUrl":"xxxxx111","log":{"batchSize":50,"consoleOutput":true,"enabled":true,"fileOutput":true,"flushIntervalSeconds":5,"keepFiles":30,"levels":{"dao":true,"debug":true,"error":true,"info":true,"severe":true,"warn":true}}}
+2025-12-16 16:22:58 | DEBUG | debug | 拦截路径: [/api/**]
+2025-12-16 16:22:58 | DEBUG | debug | 排除路径: [/api/auth/login, /api/auth/login_user, /api/file/file, /api/file/image]
