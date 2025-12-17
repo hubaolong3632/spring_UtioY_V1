@@ -66,6 +66,8 @@ public class TimeConfig {
 //        System.out.println(!LogQueue.dao_list.isEmpty());
 //        System.out.println(LogQueue.dao_list.size());
        if(!LogQueue.dao_list.isEmpty()) {
+
+           Log.info("数据库保存");
            List<LogEntryModel> batch = new ArrayList<>(LogQueue.dao_list); //拷贝一份新的
            LogQueue.dao_list.clear();
            utioMapper.save_log(batch); //批量保存数据库

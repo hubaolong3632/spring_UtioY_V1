@@ -19,7 +19,7 @@ public class LogQueue {
 
 
 //    底并发保存的加锁保证读写唯一
-    public static List<LogEntryModel> dao_list = Collections.synchronizedList(new ArrayList<>());
+    public static List<LogEntryModel> dao_list = Collections.synchronizedList(new ArrayList<>(500));
 
 
     /**
@@ -71,4 +71,3 @@ public class LogQueue {
         return logQueue.remainingCapacity();
     }
 }
-

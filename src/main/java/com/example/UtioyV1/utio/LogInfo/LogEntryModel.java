@@ -1,5 +1,6 @@
 package com.example.UtioyV1.utio.LogInfo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
  * 日志条目类
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LogEntryModel {
 
     /**
@@ -81,4 +83,3 @@ public class LogEntryModel {
     public LogEntryModel() {
     }
 }
-

@@ -1,24 +1,40 @@
 package com.example.UtioyV1.utio.config;
 
 import com.example.UtioyV1.utio.Code.Config;
+import com.example.UtioyV1.utio.Filter.JWTFilter;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioClass.JwtUtio;
 import com.example.UtioyV1.utio.UtioY;
+import com.example.UtioyV1.utio.mapper.UtioMapper;
+import com.example.UtioyV1.utio.model.ConfigKeyModel;
 import jakarta.annotation.Resource;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+import static com.example.UtioyV1.utio.Log.initializeLogThread;
 
 
 /**
  * 依赖注入
  */
 @Configuration
-public class InjectBeanConfig  implements WebMvcConfigurer, CommandLineRunner {
+@EnableScheduling //自动注入yml
+@EnableAsync // 开启异步支持
+@MapperScan("com.example.*.utio.mapper")
+@MapperScan("com.example.*.mapper")
+public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
 
     //允许所有请求跨域
@@ -98,21 +114,36 @@ public class InjectBeanConfig  implements WebMvcConfigurer, CommandLineRunner {
     @Autowired
     private Environment environment;
 
+    @Resource
+    private UtioMapper utioMapper;
+
     // 应用启动完成后执行的逻辑
     @Override
+    @Async //异步导入
     public void run(String... args) throws Exception {
         // 获取激活的配置文件
         String[] activeProfiles = environment.getActiveProfiles();
         String activeProfilesStr = activeProfiles.length > 0
                 ? String.join(",", activeProfiles)
                 : "默认配置";
-
-// 获取端口号（从配置中读取，默认8080）
         String port = environment.getProperty("server.port", "8080");
 
-// 输出规则：文字（无颜色） + 配置值/端口值（加粗绿色）
-      Log.info("配置:" + "\u001B[1;32m" + activeProfilesStr + "\u001B[0m" + "   端口:" + "\u001B[1;32m" + port + "\u001B[0m");
+        Log.info("配置:" + "\u001B[1;32m" + activeProfilesStr + "\u001B[0m" + "   端口:" + "\u001B[1;32m" + port + "\u001B[0m");
+
+        //配置从数据库导入的
+        List<ConfigKeyModel> configKeyModels = utioMapper.from_config();
+        for (ConfigKeyModel c1 : configKeyModels) {
+            Config.DAO_VALUE.put(c1.config_key,c1.config_value);
+        }
+        Config.IS_DAO=true; //表示加载完成
+
+
+
+//      启动日志
+        initializeLogThread();
+
 
     }
+
 
 }

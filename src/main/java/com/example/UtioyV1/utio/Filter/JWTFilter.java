@@ -1,4 +1,4 @@
-package com.example.UtioyV1.utio.config;
+package com.example.UtioyV1.utio.Filter;
 
 import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Code.ResultCode;
@@ -18,10 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.PrintWriter;
 
 @Component
-@EnableScheduling //自动注入yml
-@EnableAsync // 开启异步支持
-@MapperScan("com.example.*.utio.mapper")
-@MapperScan("com.example.*.mapper")
+
 public class JWTFilter implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

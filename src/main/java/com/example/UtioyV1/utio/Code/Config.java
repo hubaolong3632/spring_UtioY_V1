@@ -12,11 +12,23 @@ import java.util.Map;
 @Data  // 添加 Lombok
 public class Config {
 
+//    数据库配置
+    public static Map<String,String> DAO_VALUE = new HashMap<>(50);
+    public static Boolean IS_DAO =false; //判断数据库是否已经加载完成
+
+//    通过key拿到value
+    public static String  getDaoValue(String key){
+        return DAO_VALUE.get(key);
+    }
+
+
     // static 字段（给其他地方直接用）
     public static String CLAIMS_JWS_ATTRIBUTE = "CLAIMS_JWS_ATTRIBUTE";
     public static String currentPath = System.getProperty("user.dir") + "/file";
     public static String FILE_URL = "https://smartfarmservice.00000.work";
-    
+
+
+
     // 日志配置静态字段
     public static boolean LOG_ENABLED = true;
     public static boolean LOG_CONSOLE_OUTPUT = true;

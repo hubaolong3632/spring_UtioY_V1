@@ -43,9 +43,9 @@ public class Log {
 
 //
     // 初始化日志线程
-     static {
-        initializeLogThread();
-    }
+//     static {
+//        initializeLogThread();
+//    }
 
     /**
      * 初始化日志处理线程（多线程版本）
@@ -53,11 +53,12 @@ public class Log {
 
 
 
-    private  static void initializeLogThread(){
+    public   static void initializeLogThread(){
         // 如果日志未启用，不启动线程
         if (!Config.LOG_ENABLED) {
             return;
         }
+//        System.out.println("启动");
 
         // 初始化日志目录
         LogWriter.initializeLogDir();
@@ -72,7 +73,8 @@ public class Log {
         // 启动多个后台写入线程（提高并发处理能力）
         logThreads = new Thread[WRITER_THREAD_COUNT];
         for (int i = 0; i < WRITER_THREAD_COUNT; i++) {
-            System.out.println("启动线程");
+            Log.info("启动日志线程");
+//            System.out.println("启动线程");
             final int threadId = i;
             logThreads[i] = new Thread(() -> {
                 int batchSize = getBatchSize();
@@ -173,23 +175,8 @@ public class Log {
 
         // 根据配置决定是否输出到控制台
         if (Config.LOG_CONSOLE_OUTPUT) {
-        String back_code="";
-
-            if(log.getLevel() == LogLevel.INFO){
-                back_code="\033[1;32m"; //绿色
-            }
-            else if(log.getLevel() == LogLevel.DEBUG) {
-                back_code = "\033[1;34m"; //蓝色
-            }
-            else if (log.getLevel() == LogLevel.ERROR) {
-                back_code="\033[1;31m"; //红色
-
-            }else if(log.getLevel() == LogLevel.WARN){
-                back_code="\033[1;33m"; //黄色
-            }else if(log.getLevel() == LogLevel.SEVERE){
-                back_code="\033[1;41;37m"; //红底白字
-            }
-                System.out.println(
+            String back_code = getString(log);
+            System.out.println(
                         "\033[32m" + DateUtio.dateDay_String(log.getCreate_time()) + "\033[0m | " +  // 时间保持绿色（可按需改回蓝色）
                                 back_code + log.getLevel() + "\033[0m | " +              // 日志级别改为红色（加粗）
                                 log.getMessage()
@@ -215,6 +202,26 @@ public class Log {
         }
 
         return true;
+    }
+
+    private static String getString(LogEntryModel log) {
+        String back_code="";
+
+        if(log.getLevel() == LogLevel.INFO){
+            back_code="\033[1;32m"; //绿色
+        }
+        else if(log.getLevel() == LogLevel.DEBUG) {
+            back_code = "\033[1;34m"; //蓝色
+        }
+        else if (log.getLevel() == LogLevel.ERROR) {
+            back_code="\033[1;31m"; //红色
+
+        }else if(log.getLevel() == LogLevel.WARN){
+            back_code="\033[1;33m"; //黄色
+        }else if(log.getLevel() == LogLevel.SEVERE){
+            back_code="\033[1;41;37m"; //红底白字
+        }
+        return back_code;
     }
 
 
@@ -338,6 +345,10 @@ public class Log {
      */
     public static void dao_save(String msg,String user,String type) {
         dao_save(LogLevel.DAO,type,msg,"",user);
+    }
+
+    public static void dao_save(String msg,String type) {
+        dao_save(LogLevel.DAO,type,msg,"",null);
     }
 
 

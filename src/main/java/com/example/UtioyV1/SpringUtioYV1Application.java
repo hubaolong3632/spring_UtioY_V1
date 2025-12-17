@@ -11,22 +11,11 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-
-
-
+@MapperScan("com.example.*.mapper") //扫描com.example.UtioyV1.mapper下的依赖
 public class SpringUtioYV1Application {
 
     public static void main(String[] args) {
-
-//        System.out.println("ssss");
-//        Log.info("xxxx");
-//        Log.info("xxxx",);
-//        Log.infoSave();
-
-
      SpringApplication.run(SpringUtioYV1Application.class, args);
-
-
     }
 
 }

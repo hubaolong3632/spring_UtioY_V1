@@ -24,4 +24,3 @@ public enum LogLevel {
         return this.value;
     }
 }
-

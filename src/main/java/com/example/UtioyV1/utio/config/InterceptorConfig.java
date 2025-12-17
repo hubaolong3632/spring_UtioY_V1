@@ -39,4 +39,3 @@ public class InterceptorConfig {
         this.excludePaths = excludePaths;
     }
 }
-
