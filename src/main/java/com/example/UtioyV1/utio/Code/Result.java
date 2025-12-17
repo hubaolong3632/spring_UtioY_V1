@@ -123,10 +123,13 @@ public class Result implements Serializable {
         return result;
     }
 
-    public static Result failure( ResultCode code,String msg) {
+    public static Result failure(ResultCode code,String msg) {
         Result result = new Result();
-        result.setResultCode(ResultCode.SUCCESS_NO);
-        result.setMsg(msg);
+        result.setResultCode(code);
+//        result.setMsg(msg);
+
+        result.setData(msg);
+
         return result;
     }
     public static Result failure(ResultCode resultCode, Object data, String msg) {

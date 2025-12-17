@@ -1,0 +1,42 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE mapper-->
+<!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+<!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<!--<mapper namespace="com.example.UtioyV1.utio.mapper.UtioMapper">-->
+
+
+
+<!--&lt;!&ndash;    &lt;!&ndash; 批量插入日志：insert_log(List<LogEntry> logs) &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <insert id="save_log" parameterType="java.util.List">&ndash;&gt;-->
+<!--&lt;!&ndash;        INSERT INTO sys_log (&ndash;&gt;-->
+<!--&lt;!&ndash;        type,&ndash;&gt;-->
+<!--&lt;!&ndash;        message,&ndash;&gt;-->
+<!--&lt;!&ndash;        user,&ndash;&gt;-->
+<!--&lt;!&ndash;        level,&ndash;&gt;-->
+<!--&lt;!&ndash;        reserved,&ndash;&gt;-->
+<!--&lt;!&ndash;        create_time&ndash;&gt;-->
+<!--&lt;!&ndash;        ) VALUES&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; 遍历List集合，拼接多条值 &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <foreach collection="list" item="log" separator=",">&ndash;&gt;-->
+<!--&lt;!&ndash;            (&ndash;&gt;-->
+<!--&lt;!&ndash;            #{log.type},&ndash;&gt;-->
+<!--&lt;!&ndash;            #{log.message},&ndash;&gt;-->
+<!--&lt;!&ndash;            #{log.user},&ndash;&gt;-->
+<!--&lt;!&ndash;            #{log.level.value}, &lt;!&ndash; 枚举转字符串：取枚举名称（INFO/ERROR） &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            #{log.reserved},&ndash;&gt;-->
+<!--&lt;!&ndash;            #{log.create_time}&ndash;&gt;-->
+<!--&lt;!&ndash;            )&ndash;&gt;-->
+<!--&lt;!&ndash;        </foreach>&ndash;&gt;-->
+<!--&lt;!&ndash;    </insert>&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;    <select id="from_config" resultType="com.example.UtioyV1.utio.model.ConfigKeyModel">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; 仅查询需要的两个字段，顺序不影响，MyBatis会匹配@MapKey和resultType &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        select config_key, config_value&ndash;&gt;-->
+<!--&lt;!&ndash;        from sys_config&ndash;&gt;-->
+<!--&lt;!&ndash;        where `is_status`=1;&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </select>&ndash;&gt;-->
+
+<!--</mapper>-->

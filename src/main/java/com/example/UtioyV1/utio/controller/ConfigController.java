@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+/**
+ * 配置文件
+ */
 @RestController
 @RequestMapping("/config")
 public class ConfigController {
@@ -21,7 +23,11 @@ public class ConfigController {
     @Resource
     private UtioMapper utioMapper;
 
-    @RequestMapping("/update")
+    /**
+     *  重新初始化配置文件
+     * @return
+     */
+    @RequestMapping("/init")
     public Result init(){
         //配置从数据库导入的
         List<ConfigKeyModel> configKeyModels = utioMapper.from_config();
@@ -39,7 +45,13 @@ public class ConfigController {
       return Result.failure("数据库为空");
     }
 
-
+    /**
+     * 查询最新的日志
+     * @param level
+     * @param type
+     * @param sum
+     * @return
+     */
     @RequestMapping("/log")
     public Result log(String level, String type, @RequestParam(value = "sum", defaultValue = "20") Integer sum ){
         List<LogEntryModel> logEntryModels = utioMapper.from_log(level, type, sum);

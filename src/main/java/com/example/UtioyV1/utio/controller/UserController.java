@@ -8,7 +8,9 @@ import com.example.UtioyV1.utio.model.UserMsgModel;
 import com.example.UtioyV1.utio.service.ReturnException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * 用户管理
+ */
 @RestController
 @RequestMapping("/api/auth")
 public class UserController  extends UserMsgModel {
@@ -24,9 +26,9 @@ public class UserController  extends UserMsgModel {
     @RequestMapping("/text1")
     public Result text11(Integer user_id,boolean b1){
 
-        Log.error("瞅瞅"+user_id);
+//        Log.error("瞅瞅"+user_id);
 
-
+        Log.info("用户id"+user_id);
         System.out.println("执行成功");
         if(b1==true){
             throw new ReturnException("错误测试");

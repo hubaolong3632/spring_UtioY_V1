@@ -1,7 +1,6 @@
 package com.example.UtioyV1.utio.config;
 
 import com.example.UtioyV1.utio.Code.Config;
-import com.example.UtioyV1.utio.Filter.JWTFilter;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioClass.JwtUtio;
 import com.example.UtioyV1.utio.UtioY;
@@ -61,12 +60,12 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
     @Bean("text1")
     public Boolean text(Config interc){
 //        Log.info("输入"+UtioY.JSON(interc));
-        Log.info("输入"+UtioY.JSON(interc));
-        Log.error("输入"+UtioY.JSON(interc));
-        Log.debug("输入"+UtioY.JSON(interc));
-        Log.warn("输出保存");
-        Log.severe("错误");
-        Log.dao_save("保存到数据库");
+//        Log.info("输入"+UtioY.JSON(interc));
+//        Log.error("输入"+UtioY.JSON(interc));
+//        Log.debug("输入"+UtioY.JSON(interc));
+//        Log.warn("输出保存");
+//        Log.severe("错误");
+//        Log.dao_save("保存到数据库");
 //        Log.info("错误","ss");
 //        Log.info("错误","ss");
 
@@ -87,28 +86,28 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
     }
 
 
-    @Resource
-    private JWTFilter myInterceptor;
+//    @Resource
+//    private JWTFilter myInterceptor;
 
-    @Resource
-    private InterceptorConfig interceptorConfig;
+//    @Resource
+//    private InterceptorConfig interceptorConfig;
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration interceptor = registry.addInterceptor(myInterceptor);
-
-        // 添加拦截路径
-        if (interceptorConfig.getIncludePaths() != null && !interceptorConfig.getIncludePaths().isEmpty()) {
-            interceptor.addPathPatterns(interceptorConfig.getIncludePaths());
-            Log.debug("拦截路径: " + interceptorConfig.getIncludePaths());
-        }
-
-        // 添加排除路径
-        if (interceptorConfig.getExcludePaths() != null && !interceptorConfig.getExcludePaths().isEmpty()) {
-            interceptor.excludePathPatterns(interceptorConfig.getExcludePaths());
-            Log.debug("排除路径: " + interceptorConfig.getExcludePaths());
-        }
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        InterceptorRegistration interceptor = registry.addInterceptor(myInterceptor);
+//
+//        // 添加拦截路径
+//        if (interceptorConfig.getIncludePaths() != null && !interceptorConfig.getIncludePaths().isEmpty()) {
+//            interceptor.addPathPatterns(interceptorConfig.getIncludePaths());
+//            Log.debug("拦截路径: " + interceptorConfig.getIncludePaths());
+//        }
+//
+//        // 添加排除路径
+//        if (interceptorConfig.getExcludePaths() != null && !interceptorConfig.getExcludePaths().isEmpty()) {
+//            interceptor.excludePathPatterns(interceptorConfig.getExcludePaths());
+//            Log.debug("排除路径: " + interceptorConfig.getExcludePaths());
+//        }
+//    }
 
 
     @Autowired
