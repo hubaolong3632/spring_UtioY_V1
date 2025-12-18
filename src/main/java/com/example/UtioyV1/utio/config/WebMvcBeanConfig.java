@@ -36,6 +36,9 @@ import static com.example.UtioyV1.utio.Log.initializeLogThread;
 public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
 
+    @Autowired
+    private Config config;
+
     //允许所有请求跨域
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -120,6 +123,7 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
     @Override
     @Async //异步导入
     public void run(String... args) throws Exception {
+
         // 获取激活的配置文件
         String[] activeProfiles = environment.getActiveProfiles();
         String activeProfilesStr = activeProfiles.length > 0
@@ -136,6 +140,25 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
         }
         Config.IS_DAO=true; //表示加载完成
 
+
+
+
+        //                Text11 text11 = new Text11();
+//                Class<?> clazz = text11.getClass();
+//                Field[] declaredFields = Text11.class.getDeclaredFields();
+//                for (Field s1 : declaredFields){
+//
+//                    Field f1 = clazz.getDeclaredField(s1.getName());
+//                    f1.set(text11,getString(row, s1.getName()) ); // 公有字段也可加setAccessible，不影响
+////                    System.out.println("对象："+s1.getName());
+//                }
+//
+//                System.out.println("t1:  "+text11);
+//
+//
+//                if(1==1){
+//                    return;
+//                }
 
 
 //      启动日志

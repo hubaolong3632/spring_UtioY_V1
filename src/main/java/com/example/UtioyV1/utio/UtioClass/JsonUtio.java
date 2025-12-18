@@ -11,8 +11,8 @@ import java.util.List;
 //JSON格式的操作指南
 public class JsonUtio {
     public static String JSON(Object obj) { //传输json格式
-        String json = com.alibaba.fastjson2.JSON.toJSONString(obj); //序列化
-        return json;
+        //序列化
+        return com.alibaba.fastjson2.JSON.toJSONString(obj);
     }
 
     public static <T> T JSON_COPY(T data) { //深拷贝不支持集合

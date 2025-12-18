@@ -19,7 +19,7 @@ import java.util.List;
 public class JWTModel {
 
 
-    private Integer id; //用户数据库id
+    private String id; //用户数据库id 可能为uuid所以用string
     private String username; //用户账号
     private String name; //用户姓名
     private String openid; //用户唯一id
@@ -31,7 +31,7 @@ public class JWTModel {
     public JWTModel() {
     }
 
-    public JWTModel(Integer id, String name, String jurisdiction) {
+    public JWTModel(String id, String name, String jurisdiction) {
         this.id = id;
         this.name = name;
         this.jurisdiction = jurisdiction;

@@ -17,7 +17,7 @@ public class UserController  extends UserMsgModel {
     @RequestMapping("/login")
     public Result text1(boolean b1){
 
-        String s = UtioY.JWT_Create("jwt", new JWTModel(12312, "zs", "22"));
+        String s = UtioY.JWT_Create("jwt", new JWTModel("1233", "zs", "22"));
 
         return Result.success(s);
     }
