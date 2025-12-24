@@ -1,25 +1,17 @@
 package com.example.UtioyV1.utio.Filter;
 
-import com.example.UtioyV1.utio.Code.Config;
 import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Code.ResultCode;
 import com.example.UtioyV1.utio.Code.Role;
-import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.config.FilterTool;
-import com.example.UtioyV1.utio.model.JWTDatasModel;
-import com.example.UtioyV1.utio.model.JWTModel;
 import com.example.UtioyV1.utio.model.UserRole;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 权限拦截器 - 检查方法上的 @UserRole 注解并进行权限校验
@@ -57,7 +49,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
         String[] andJurisdiction = userRole.and();
 
 
-        String jurisdiction = UtioY.JWT_getUser(request).getJurisdiction()+":";
+        String jurisdiction = UtioY.JWT_getUser(request).getRole()+":";
 //        System.out.println("用户权限"+jurisdiction);
 
         if(orJurisdiction!=null){ //如果拥有其中一个权限

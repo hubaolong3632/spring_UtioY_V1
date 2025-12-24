@@ -10,11 +10,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 @Data
 @Accessors(chain = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -26,7 +21,7 @@ public class JWTModel {
     private String username; //用户账号
     private String name; //用户姓名
     private String openid; //用户唯一id
-    private String jurisdiction; //权限
+    private String role; //权限
 //    private Map<String,String> jurisdiction_map=new HashMap<>(); //权限列表
     private Long past_time; //过期时间
 
@@ -37,7 +32,7 @@ public class JWTModel {
     public JWTModel(String id, String name, String jurisdiction) {
         this.id = id;
         this.name = name;
-        this.jurisdiction = jurisdiction;
+        this.role = jurisdiction;
     }
 
 

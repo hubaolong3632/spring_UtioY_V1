@@ -49,10 +49,6 @@ public class UtioY {
 //        return  batch;
 //    }
 
-    /**
-     * 更具提供的头和请求内容进行生成jwt
-     */
-    public static String JWT_Create(String subject, JWTModel jwtmodel){return JwtUtio.JWTCreate(subject,jwtmodel);}
 
     /**
      * 获取jwt信息
@@ -62,11 +58,23 @@ public class UtioY {
         return jwtBody.getJwtmodel();
     }
 
+
+    /**
+     * 更具提供的头和请求内容进行生成jwt
+     */
+    public static String JWT_Create(JWTModel jwtmodel){
+        // 设置过期时间
+        Date expiration = new Date(System.currentTimeMillis() + JwtUtio.EXPIRATION_TIME); //当前时间加一周
+        return JwtUtio.JWTCreate(expiration,jwtmodel);
+    }
+
     /**
      * 更具旧的JWT去生成新的JWT 时间默认加一周
      */
-    public static String JWT_Create(String jwt){
-        return JwtUtio.JWTCreate(jwt);
+    public static String JWT_Update(String jwt){
+
+        Date expiration = new Date(System.currentTimeMillis() + JwtUtio.EXPIRATION_TIME); //当前时间加一周
+        return JwtUtio.JWTUpdate(expiration,jwt);
     }
 
     /**

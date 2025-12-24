@@ -12,7 +12,7 @@ public class JwtUtio {
 
 //    private static final long EXPIRATION_TIME = 31536000000; // 一年
 //    private static final long  EXPIRATION_TIME = 2592000000; // 一个月
-    private static final long EXPIRATION_TIME = 604800000; // 一周
+    public static final long EXPIRATION_TIME = 604800000; // 一周
 //    private static final long EXPIRATION_TIME =   86400000; // 一天
     private static  String SECRET = "8520b3d2d13b0d8ace53d6a81f1ca25c834234234234"; // 秘钥 绝密
     private static  String ISSUER = "SK-00000.work"; // 签发者
@@ -33,13 +33,13 @@ public class JwtUtio {
     }
 
 
+
     //    生成JWT
-    public static String JWTCreate(String subject, JWTModel jwtmodel) { //提交面向的对象  和需要保存的数据
-        // 设置过期时间
-        Date expiration = new Date(System.currentTimeMillis() + EXPIRATION_TIME); //当前时间加一周
+    public static String JWTCreate(Date expiration,JWTModel jwtmodel) { //提交面向的对象  和需要保存的数据
+
         // 创建 JWT
         String jwt = Jwts.builder()
-                .setSubject(subject)  //jwt所面向的对象
+                .setSubject(UtioY.Random_string20())  //用户临时id 用于做用户数量限制等功能
                 .setExpiration(expiration) //过期时间
 //                .setNotBefore(expiration) //设置在当前时间都是过期的 就是不让使用 没事别打开
                 .setIssuer(ISSUER)    //定义签发者
@@ -89,13 +89,13 @@ public class JwtUtio {
     /**
      *提供旧的jwt 对当前jwt进行增长时间
      */
-    public static String JWTCreate(String jwt) {
+    public static String JWTUpdate(Date expiration,String jwt) {
 
         jwt=jwt.replace("Bnarer ","");
         System.out.println("jwt去掉头后:"+jwt);
 
         JWTDatasModel jwtDatasModel = JWTAnalysis(jwt);
-        JWTCreate(jwtDatasModel.getSubject(),jwtDatasModel.getJwtmodel());
+        JWTCreate(expiration,jwtDatasModel.getJwtmodel());
         return jwt;
     }
 

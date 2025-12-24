@@ -77,14 +77,14 @@ public class JWTFilter implements Filter {
 
 
         // 2. 打印认证信息
-        Log.debug("\n========访问人权限:" + jwtDatasModel.getJwtmodel().getJurisdiction() + "   访问人id:" + jwtDatasModel.getJwtmodel().getId() +"  用户ip:"+request.getParameter("user_ip")+"  路径:"+requestURI+ "======\n");
+        Log.debug("\n========访问人权限:" + jwtDatasModel.getJwtmodel().getRole() + "   访问人id:" + jwtDatasModel.getJwtmodel().getId() +"  用户ip:"+request.getParameter("user_ip")+"  路径:"+requestURI+ "======\n");
 //        Log.debug("JWT解析结果：" + jwtDatasModel);
 
 
         // 3. 包装请求，添加user_id参数（Filter中必须传递包装后的request才生效）
         CustomRequestWrapper wrappedRequest = new CustomRequestWrapper(request);
         wrappedRequest.addParameter(Role.user_id, jwtDatasModel.getJwtmodel().getId()); // 测试用固定值，可替换为真实ID：jwtDatasModel.getJwtmodel().getId().toString()
-        wrappedRequest.addParameter(Role.user_role, jwtDatasModel.getJwtmodel().getJurisdiction()); // 测试用固定值，可替换为真实ID：jwtDatasModel.getJwtmodel().getId().toString()
+        wrappedRequest.addParameter(Role.user_role, jwtDatasModel.getJwtmodel().getRole()); // 测试用固定值，可替换为真实ID：jwtDatasModel.getJwtmodel().getId().toString()
 
 
         // 4. 传递包装后的请求到后续过滤器/控制器

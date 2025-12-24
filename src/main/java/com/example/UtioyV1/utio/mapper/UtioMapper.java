@@ -107,10 +107,10 @@ public interface UtioMapper{
         FROM sys_jurisdiction, (SELECT @row := 0) t
         LIMIT 100
     ),
-    -- 步骤2：基础层：获取所有type=user的用户 + 拆分其UID为单个权限ID
+    -- 步骤2：基础层：获取所有type=role的用户 + 拆分其UID为单个权限ID
     permission_tree AS (
         SELECT
-            j1.jurisdiction AS user_name, -- 保留用户名
+            j1.jurisdiction AS role_name, -- 保留用户名
             j2.id AS perm_id,
             j2.uid AS perm_uid,
             j2.jurisdiction AS perm_name,
@@ -118,7 +118,7 @@ public interface UtioMapper{
             j2.uid AS parent_uid,
             1 AS recursion_depth -- 新增：递归深度标记，初始为1
         FROM sys_jurisdiction j1
-        -- 拆分user的UID为单个值
+        -- 拆分role的UID为单个值
         JOIN num_sequence nums
             ON nums.num <= LENGTH(j1.uid) - LENGTH(REPLACE(j1.uid, ',', '')) + 1
         -- 关联对应的权限
@@ -126,7 +126,7 @@ public interface UtioMapper{
             ON j2.type = 'jurisdiction'
             AND j2.id = SUBSTRING_INDEX(SUBSTRING_INDEX(j1.uid, ',', nums.num), ',', -1)
         WHERE
-            j1.type = 'user'  -- 只查type=user的用户
+            j1.type = 'role'  -- 只查type=role的用户
             AND j2.is_status = 1
             AND j2.jurisdiction IS NOT NULL
 
@@ -134,7 +134,7 @@ public interface UtioMapper{
 
         -- 步骤3：递归层：查询权限的子集（防循环引用+深度限制）
         SELECT
-            pt.user_name, -- 继承用户名
+            pt.role_name, -- 继承用户名
             j3.id AS perm_id,
             j3.uid AS perm_uid,
             j3.jurisdiction AS perm_name,
@@ -152,7 +152,7 @@ public interface UtioMapper{
     -- 步骤4：判断每个权限是否有子集 + 拼接子集信息
     permission_with_children AS (
         SELECT
-            pt.user_name,
+            pt.role_name,
             pt.perm_id,
             pt.perm_uid,
             pt.perm_name,
@@ -178,11 +178,11 @@ public interface UtioMapper{
             ON j4.type = 'jurisdiction'
             AND j4.uid = pt.perm_id
             AND j4.is_status = 1
-        GROUP BY pt.user_name, pt.perm_id, pt.perm_uid, pt.perm_name, pt.perm_desc
+        GROUP BY pt.role_name, pt.perm_id, pt.perm_uid, pt.perm_name, pt.perm_desc
     )
     -- 最终结果：按用户名分组，展示每个用户的所有权限详情
     SELECT DISTINCT
-        user_name AS name,
+        role_name AS name,
         perm_id AS id,
         perm_uid AS uid,
         perm_name AS jurisdiction_name,
@@ -191,9 +191,9 @@ public interface UtioMapper{
         IFNULL(NULLIF(children_ids, ''), '') AS son_id, -- 清空空字符串转NULL的情况
         IFNULL(NULLIF(children_names, ''), '') AS son_name,
         -- 新增：拼接key字段（供后续封装使用）
-        CONCAT(user_name, ':', perm_name) AS map_key
+        CONCAT(role_name, ':', perm_name) AS map_key
     FROM permission_with_children
-    ORDER BY user_name,perm_id;
+    ORDER BY role_name,perm_id;
 """)
 // 先以map_key为临时键返回Map，后续再转换（MyBatis@MapKey仅支持单字段）
     @MapKey("map_key")

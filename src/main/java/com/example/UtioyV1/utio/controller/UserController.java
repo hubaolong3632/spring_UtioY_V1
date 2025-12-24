@@ -3,14 +3,18 @@ package com.example.UtioyV1.utio.controller;
 import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Code.Role;
 import com.example.UtioyV1.utio.Log;
+import com.example.UtioyV1.utio.UtioClass.JwtUtio;
 import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.model.JWTModel;
+import com.example.UtioyV1.utio.model.ReturnModel;
 import com.example.UtioyV1.utio.model.UserMsgModel;
 import com.example.UtioyV1.utio.model.UserRole;
 import com.example.UtioyV1.utio.service.ReturnException;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,9 +33,14 @@ public class UserController  extends UserMsgModel {
     @RequestMapping("/login")
     public Result text1(boolean b1){
 
-        String s = UtioY.JWT_Create("jwt", new JWTModel("1233", "zs", "admin"));
 
-        return Result.success(s);
+
+        Date expiration = new Date(System.currentTimeMillis() + JwtUtio.EXPIRATION_TIME); //当前时间加一周
+        String jwt = JwtUtio.JWTCreate(expiration,new JWTModel("1233", "zs", "admin"));
+
+
+        ReturnModel add = UtioY.Ret().add("jwt", jwt).add("time", expiration);
+        return Result.success(add);
     }
 
     /**
@@ -61,7 +70,7 @@ public class UserController  extends UserMsgModel {
      * @return
      */
     @RequestMapping("/get_role")
-    @UserRole( {"cc","aa","bb"})
+//    @UserRole( {"cc","aa","bb"})
     public Result role(String user_role){
 
 
@@ -72,6 +81,24 @@ public class UserController  extends UserMsgModel {
         }
 
         return Result.success(strings);
+    }
+
+
+
+
+
+    /**
+     * 更新JWT
+     * @param
+     * @return
+     */
+    @RequestMapping("/jwt_update")
+    public Result text1(@RequestHeader("Authorization") String authorization){
+        Log.debug(authorization);
+        Date expiration = new Date(System.currentTimeMillis() + JwtUtio.EXPIRATION_TIME); //当前时间加一周
+        String jwt = JwtUtio.JWTUpdate(expiration,authorization);
+
+        return Result.success(jwt);
     }
 
 
