@@ -78,4 +78,20 @@ public class TimeConfig {
     }
 
 
+
+    @Resource
+    private InitConfig initConfig;
+
+
+    /**
+     * 每天0点更新一次配置文件
+     */
+    @Scheduled(cron = "0 * * 1 * ?")
+    public void LogTaskConfig() {
+        Log.info("重新更新配置文件");
+        initConfig.initConfig();
+
+    }
+
+
 }

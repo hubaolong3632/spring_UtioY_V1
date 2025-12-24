@@ -2,6 +2,7 @@ package com.example.UtioyV1.utio.UtioClass;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.model.ApiDataModel;
 import com.example.UtioyV1.utio.model.ApiHreadModel;
@@ -137,7 +138,7 @@ public class ApiUtio {
      * 输出结果
      */
     private static void JSONPrintf(String json){
-        System.out.println("json输出:"+json);
+        Log.info("json输出:" + json);
 //        JSONObject jsonObject = JSON.parseObject(json);
 //        Integer errcode = jsonObject.getInteger("errcode");
 

@@ -177,8 +177,12 @@ public class UtioY {
 
 
 
-    /***/
-
+    /**
+     * 获取配置文件对应的键
+     * */
+    public static String get_Config(String key) {
+        return Config.getDaoValue(key);
+    }
 
     /***/
 

@@ -85,6 +85,7 @@ interceptor:
     - /api/auth/login_user
     - /api/file/file
     - /api/file/image
+
 ---
 config:
   fileUrl: "xxxxx111"
@@ -95,7 +96,7 @@ config:
     enabled: true              # 是否启用日志输出
     console-output: true       # 是否输出到控制台
     file-output: true          # 是否保存到文件
-    flush-interval-seconds: 5   # 每隔多少秒保存一次
+    flush-interval-seconds: 2   # 每隔多少秒保存一次
     batch-size: 50             # 超过多少条保存一次
     keep-files: 30              # 每个级别/年/月目录下保留最新的文件数量（按日期排序）
     levels:                     # 控制各个日志级别的启用状态
@@ -106,3 +107,13 @@ config:
       severe: true              # SEVERE级别是否启用
       dao: true                 # 数据库保存是否启用
 ---
+
+
+# 阿里云OSS配置 demo-utioy.oss-cn-hangzhou.aliyuncs.com
+
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    access-key-id: LTAI5tE1bhHEEgjmQ925R3aD
+    access-key-secret: FWuuvL5QtHU4mnkBBXLOriloMypatw
+    bucket-name: demo-utioy  #桶名

@@ -5,6 +5,7 @@ import com.example.UtioyV1.utio.Code.Config;
 import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.LogInfo.LogEntryModel;
+import com.example.UtioyV1.utio.config.InitConfig;
 import com.example.UtioyV1.utio.mapper.UtioMapper;
 import com.example.UtioyV1.utio.model.ConfigKeyModel;
 import jakarta.annotation.Resource;
@@ -23,26 +24,20 @@ public class ConfigController {
     @Resource
     private UtioMapper utioMapper;
 
+
+    @Resource
+    private InitConfig init;
+
     /**
      *  重新初始化配置文件
      * @return
      */
     @RequestMapping("/init")
     public Result init(){
-        //配置从数据库导入的
-        List<ConfigKeyModel> configKeyModels = utioMapper.from_config();
-        if(configKeyModels!=null){
-            Config.DAO_VALUE.clear(); //清空原来的表
 
-            for (ConfigKeyModel c1 : configKeyModels) {
-                Config.DAO_VALUE.put(c1.config_key,c1.config_value);
-            }
-            Log.info("重新更新配置文件");
-            return Result.success("更新配置文件成功");
-        }
+        return  Result.utio(init.initConfig(),"更新配置文件成功","数据库为空");
 
 
-      return Result.failure("数据库为空");
     }
 
     /**

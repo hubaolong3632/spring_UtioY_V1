@@ -50,11 +50,11 @@ public class FileController {
     @PostMapping("/image")
     @Transactional
     public Result uploadImage(@RequestParam(value = "http", defaultValue = "false") Boolean http,
-                              @RequestParam(value = "https", defaultValue = "false") Boolean https,
-                              @RequestParam(value = "scale", defaultValue = "1.0") Double scale,
-                              @RequestParam(value = "quality", defaultValue = "0.6") Double quality,
-                              @RequestParam("file") MultipartFile file,
-                              HttpServletRequest request) {
+                             @RequestParam(value = "https", defaultValue = "false") Boolean https,
+                             @RequestParam(value = "scale", defaultValue = "1.0") Double scale,
+                             @RequestParam(value = "quality", defaultValue = "0.6") Double quality,
+                             @RequestParam("file") MultipartFile file,
+                             HttpServletRequest request) {
         if (file.isEmpty()) {
             return Result.failure("上传的图片为空");
         }
@@ -63,6 +63,20 @@ public class FileController {
         return Result.success(fileModel);
     }
 
-
+//    /**
+//     * 上传文件到阿里云OSS
+//     * @param file 上传的文件
+//     * @return FileModel（包含OSS访问URL）
+//     */
+//    @PostMapping("/oss")
+//    @Transactional
+//    public Result uploadFileToOss(@RequestParam("file") MultipartFile file) {
+//        if (file.isEmpty()) {
+//            return Result.failure("上传的文件为空");
+//        }
+//
+//        FileModel fileModel = fileService.uploadFileToOss(file);
+//        return Result.success(fileModel);
+//    }
 
 }

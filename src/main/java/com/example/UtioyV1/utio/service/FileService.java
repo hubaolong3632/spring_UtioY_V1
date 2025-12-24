@@ -1,8 +1,13 @@
 package com.example.UtioyV1.utio.service;
 
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
+import com.aliyun.oss.model.PutObjectRequest;
 import com.example.UtioyV1.utio.Code.Config;
 import com.example.UtioyV1.utio.model.FileModel;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +20,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,8 +33,10 @@ import java.util.List;
 @Service
 public class FileService {
 
+
+
     /**
-     * 上传文件
+     * 上传文件（本地存储，原有方法）
      * @param file 上传的文件
      * @param http 是否拼接http路径
      * @param request 请求对象
@@ -285,34 +293,197 @@ public class FileService {
     }
 
 
-    /**
-     * 无损压缩图片（PNG格式，最大压缩级别）
-     * @param image 图片
-     * @param outputFile 输出文件
-     */
-    private void compressLossless(BufferedImage image, File outputFile) throws Exception {
-        // 获取 PNG 写入器
-        Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("png");
-        if (!writers.hasNext()) {
-            throw new ReturnException("不支持PNG格式");
-        }
+//    /**
+//     * 无损压缩图片（PNG格式，最大压缩级别）
+//     * @param image 图片
+//     * @param outputFile 输出文件
+//     */
+//    private void compressLossless(BufferedImage image, File outputFile) throws Exception {
+//        // 获取 PNG 写入器
+//        Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("png");
+//        if (!writers.hasNext()) {
+//            throw new ReturnException("不支持PNG格式");
+//        }
+//
+//        ImageWriter writer = writers.next();
+//        ImageWriteParam param = writer.getDefaultWriteParam();
+//
+//        // PNG 支持压缩模式设置
+//        if (param.canWriteCompressed()) {
+//            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+//            param.setCompressionQuality(0.0f); // 0.0 = 最大压缩，1.0 = 无压缩
+//        }
+//
+//        try (FileOutputStream fos = new FileOutputStream(outputFile);
+//             ImageOutputStream ios = ImageIO.createImageOutputStream(fos)) {
+//            writer.setOutput(ios);
+//            writer.write(null, new IIOImage(image, null, null), param);
+//        } finally {
+//            writer.dispose();
+//        }
+//    }
 
-        ImageWriter writer = writers.next();
-        ImageWriteParam param = writer.getDefaultWriteParam();
+//    ===================阿里云OOS========================
+//    aliyun:
+//    oss:
+//    endpoint: oss-cn-hangzhou.aliyuncs.com
+//    access-key-id: LTAI5tE1bhHEEgjmQ925R3aD
+//    access-key-secret: FWuuvL5QtHU4mnkBBXLOriloMypatw
+//    bucket-name: demo-utioy  #桶名
 
-        // PNG 支持压缩模式设置
-        if (param.canWriteCompressed()) {
-            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-            param.setCompressionQuality(0.0f); // 0.0 = 最大压缩，1.0 = 无压缩
-        }
+//    @Resource
+//    private OssConfig ossConfig;
 
-        try (FileOutputStream fos = new FileOutputStream(outputFile);
-             ImageOutputStream ios = ImageIO.createImageOutputStream(fos)) {
-            writer.setOutput(ios);
-            writer.write(null, new IIOImage(image, null, null), param);
-        } finally {
-            writer.dispose();
-        }
-    }
+
+//
+//    @Value("${aliyun.oss.endpoint}")
+//     private  String endpoint="oss-cn-hangzhou.aliyuncs.com";
+//
+//    /**
+//     * AccessKey ID
+//     */
+//    @Value("${aliyun.oss.access-key-id}")
+//    private String accessKeyId="LTAI5tE1bhHEEgjmQ925R3aD";
+//    /**
+//     * AccessKey Secret
+//     */
+//    @Value("${aliyun.oss.access-key-secret}")
+//    private String accessKeySecret="FWuuvL5QtHU4mnkBBXLOriloMypatw 1111111111111";
+//    /**
+//     * Bucket名称
+//     */
+//    @Value("${aliyun.oss.bucket-name}")
+//    private String bucketName="demo-utioy";
+//
+//
+//
+//    /**
+//     * 上传文件到OSS
+//     * @param file 上传的文件
+//     * @return FileModel
+//     */
+//    public FileModel uploadFileToOss(MultipartFile file) {
+//        // 1. 处理文件名（添加时间戳防止重复）
+//        String originalFileName = file.getOriginalFilename();
+//        if (originalFileName == null || !originalFileName.contains(".")) {
+//            throw new ReturnException("文件名格式不正确");
+//        }
+//
+//        long currentTimeMillis = System.currentTimeMillis();
+//        String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+//        String fileName = "F" + currentTimeMillis + fileExtension;
+//
+//        // 2. 配置文件存储路径（按年/月/日划分）
+//        LocalDate today = LocalDate.now();
+//        int year = today.getYear();
+//        int month = today.getMonthValue();
+//        int day = today.getDayOfMonth();
+//        // OSS中的对象名称（路径）
+//        String objectName = "file/" + year + "/" + month + "/" + day + "/" + fileName;
+//
+//        try {
+//            // 3. 上传文件到OSS
+//            String ossUrl = uploadFile(file.getInputStream(), objectName);
+//
+//            // 4. 构建FileModel
+//            long fileSize = file.getSize();
+//            String contentType = file.getContentType();
+//
+//            // 提取OSS域名（例如：https://kbox-images-hangzhou.oss-cn-hangzhou.aliyuncs.com）
+//            String ossDomain = ossUrl.substring(0, ossUrl.indexOf("/", 8)); // 从https://后找到第一个/
+//
+//            FileModel fileModel = new FileModel();
+//            fileModel
+//                    .setFile_name(fileName)           // 文件名称
+//                    .setFile_url(objectName)          // OSS中的路径
+//                    .setUrl(ossUrl)                   // OSS访问URL
+//                    .setSize(formatFileSize(fileSize)) // 格式化后的大小
+//                    .setType(contentType)             // 文件类型
+//                    .setTime(new Date())              // 上传时间
+//                    .setHead(ossDomain);             // OSS域名
+//
+//            return fileModel;
+//        } catch (Exception e) {
+//            throw new ReturnException("OSS上传失败: " + e.getMessage());
+//        }
+//    }
+//
+//
+//
+//
+//
+//
+////
+////    /**
+////     * 创建OSS客户端
+////     * @return OSS客户端实例
+////     */
+//    private OSS createOssClient() {
+//        return new OSSClientBuilder().build(
+//               endpoint,
+//                accessKeyId,
+//                accessKeySecret
+//        );
+//    }
+//
+////    /**
+////     * 上传文件到OSS
+////     * @param inputStream 文件输入流
+////     * @param objectName OSS中的对象名称（文件路径，例如：file/2024/1/15/test.jpg）
+////     * @return 文件的访问URL
+////     */
+//    public String uploadFile(InputStream inputStream, String objectName) {
+//        OSS ossClient = null;
+//        try {
+//            ossClient = createOssClient();
+//
+//            // 创建上传请求
+//            PutObjectRequest putObjectRequest = new PutObjectRequest(
+//                    bucketName,
+//                    objectName,
+//                    inputStream
+//            );
+//
+//            // 上传文件
+//            ossClient.putObject(putObjectRequest);
+//
+//            // 构建文件访问URL
+//            // 格式：https://bucket-name.endpoint/object-name
+//            String url = "https://" + bucketName + "." + endpoint + "/" + objectName;
+//
+//            return url;
+//        } catch (Exception e) {
+//            throw new RuntimeException("OSS上传失败: " + e.getMessage(), e);
+//        } finally {
+//            if (ossClient != null) {
+//                ossClient.shutdown();
+//            }
+//        }
+//    }
+
+
+
+
+
+
+//
+//    /**
+//     * 删除OSS中的文件
+//     * @param objectName OSS中的对象名称
+//     */
+//    public void deleteFile(String objectName) {
+//        OSS ossClient = null;
+//        try {
+//            ossClient = createOssClient();
+//            ossClient.deleteObject(ossConfig.getBucketName(), objectName);
+//        } catch (Exception e) {
+//            throw new RuntimeException("OSS删除失败: " + e.getMessage(), e);
+//        } finally {
+//            if (ossClient != null) {
+//                ossClient.shutdown();
+//            }
+//        }
+//    }
+//
 
 }

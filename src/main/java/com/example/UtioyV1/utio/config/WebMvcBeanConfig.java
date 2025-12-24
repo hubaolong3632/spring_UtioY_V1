@@ -1,11 +1,10 @@
 package com.example.UtioyV1.utio.config;
 
 import com.example.UtioyV1.utio.Code.Config;
+import com.example.UtioyV1.utio.Filter.JWTFilter;
+import com.example.UtioyV1.utio.Filter.PermissionInterceptor;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioClass.JwtUtio;
-import com.example.UtioyV1.utio.UtioY;
-import com.example.UtioyV1.utio.mapper.UtioMapper;
-import com.example.UtioyV1.utio.model.ConfigKeyModel;
 import jakarta.annotation.Resource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.core.env.Environment;
@@ -18,9 +17,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 import static com.example.UtioyV1.utio.Log.initializeLogThread;
 
@@ -36,8 +32,6 @@ import static com.example.UtioyV1.utio.Log.initializeLogThread;
 public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
 
-    @Autowired
-    private Config config;
 
     //允许所有请求跨域
     @Override
@@ -91,10 +85,10 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
 //    @Resource
 //    private JWTFilter myInterceptor;
-
+//
 //    @Resource
 //    private InterceptorConfig interceptorConfig;
-
+//
 //    @Override
 //    public void addInterceptors(InterceptorRegistry registry) {
 //        InterceptorRegistration interceptor = registry.addInterceptor(myInterceptor);
@@ -112,12 +106,41 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 //        }
 //    }
 
+    @Resource
+    private PermissionInterceptor permissionInterceptor;
+
+    @Resource
+    private FilterTool filterTool;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // 注册权限拦截器 - 使用和过滤器一样的路径配置
+        var interceptorRegistration = registry.addInterceptor(permissionInterceptor);
+        
+        // 添加拦截路径（从 FilterTool 读取）
+        if (filterTool.getIncludePaths() != null && !filterTool.getIncludePaths().isEmpty()) {
+            interceptorRegistration.addPathPatterns(filterTool.getIncludePaths());
+            Log.debug("权限拦截器拦截路径: " + filterTool.getIncludePaths());
+        } else {
+            // 如果没有配置拦截路径，默认拦截所有路径
+            interceptorRegistration.addPathPatterns("/**");
+        }
+        
+        // 添加排除路径（从 FilterTool 读取）
+        if (filterTool.getExcludePaths() != null && !filterTool.getExcludePaths().isEmpty()) {
+            interceptorRegistration.excludePathPatterns(filterTool.getExcludePaths());
+            Log.debug("权限拦截器排除路径: " + filterTool.getExcludePaths());
+        }
+        
+        Log.debug("权限拦截器已注册，路径配置与过滤器一致");
+    }
 
     @Autowired
     private Environment environment;
 
     @Resource
-    private UtioMapper utioMapper;
+    private InitConfig init;
+
 
     // 应用启动完成后执行的逻辑
     @Override
@@ -131,16 +154,12 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
                 : "默认配置";
         String port = environment.getProperty("server.port", "8080");
 
-        Log.info("配置:" + "\u001B[1;32m" + activeProfilesStr + "\u001B[0m" + "   端口:" + "\u001B[1;32m" + port + "\u001B[0m");
-
-        //配置从数据库导入的
-        List<ConfigKeyModel> configKeyModels = utioMapper.from_config();
-        for (ConfigKeyModel c1 : configKeyModels) {
-            Config.DAO_VALUE.put(c1.config_key,c1.config_value);
-        }
-        Config.IS_DAO=true; //表示加载完成
+        System.out.println("配置:" + "\u001B[1;31m" + activeProfilesStr + "\u001B[0m" + "   端口:" + "\u001B[1;31m" + port + "\u001B[0m");
+        Log.info("配置:" +  activeProfilesStr  + "   端口:"  + port );
 
 
+
+        init.initConfig(); //初始化配置文件
 
 
         //                Text11 text11 = new Text11();

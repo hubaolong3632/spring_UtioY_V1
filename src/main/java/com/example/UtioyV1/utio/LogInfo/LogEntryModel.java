@@ -49,6 +49,14 @@ public class LogEntryModel {
      */
     private Date create_time;
 
+    /**
+     * 创建id
+     */
+    private Long create_id;
+
+
+
+
 
 
 

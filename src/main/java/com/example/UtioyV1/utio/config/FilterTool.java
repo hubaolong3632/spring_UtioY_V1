@@ -1,6 +1,7 @@
 package com.example.UtioyV1.utio.config;
 
 import com.example.UtioyV1.utio.Code.Result;
+import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioY;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
@@ -68,7 +69,7 @@ public class FilterTool {
      * 发送JSON格式的错误响应
      */
     public  void send(HttpServletResponse response, Result result) {
-        System.out.println("xxxxxxxxx  "+UtioY.JSON(result));
+        Log.debug(UtioY.JSON(result),"封禁");
         try {
             response.setContentType("application/json;charset=UTF-8");
             response.setStatus(HttpStatus.OK.value());

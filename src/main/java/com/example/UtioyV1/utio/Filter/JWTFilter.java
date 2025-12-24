@@ -3,6 +3,7 @@ package com.example.UtioyV1.utio.Filter;
 import com.example.UtioyV1.utio.Code.Config;
 import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Code.ResultCode;
+import com.example.UtioyV1.utio.Code.Role;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.config.CustomRequestWrapper;
@@ -40,7 +41,7 @@ public class JWTFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String requestURI = request.getRequestURI(); // 获取当前请求路径
 
-        Log.debug("JWTFilter 执行，请求路径：" + requestURI);
+        Log.debug("请求路径:" + requestURI);
 
         boolean pathMatch = filterTool.isPathMatch(requestURI);
         if(pathMatch){ //为true表示这个不需要拦截
@@ -76,19 +77,18 @@ public class JWTFilter implements Filter {
 
 
         // 2. 打印认证信息
-        Log.debug("\n========访问人权限:" + jwtDatasModel.getJwtmodel().getJurisdiction() + "   访问人id:" + jwtDatasModel.getJwtmodel().getId() +"  用户ip:"+request.getParameter("user_ip")+"  路径:"+requestURI+ "======");
-        Log.debug("JWT解析结果：" + jwtDatasModel);
+        Log.debug("\n========访问人权限:" + jwtDatasModel.getJwtmodel().getJurisdiction() + "   访问人id:" + jwtDatasModel.getJwtmodel().getId() +"  用户ip:"+request.getParameter("user_ip")+"  路径:"+requestURI+ "======\n");
+//        Log.debug("JWT解析结果：" + jwtDatasModel);
 
 
         // 3. 包装请求，添加user_id参数（Filter中必须传递包装后的request才生效）
         CustomRequestWrapper wrappedRequest = new CustomRequestWrapper(request);
-        wrappedRequest.addParameter("user_id", "222"); // 测试用固定值，可替换为真实ID：jwtDatasModel.getJwtmodel().getId().toString()
-
+        wrappedRequest.addParameter(Role.user_id, jwtDatasModel.getJwtmodel().getId()); // 测试用固定值，可替换为真实ID：jwtDatasModel.getJwtmodel().getId().toString()
+        wrappedRequest.addParameter(Role.user_role, jwtDatasModel.getJwtmodel().getJurisdiction()); // 测试用固定值，可替换为真实ID：jwtDatasModel.getJwtmodel().getId().toString()
 
 
         // 4. 传递包装后的请求到后续过滤器/控制器
         filterChain.doFilter(wrappedRequest, response);
-
 
 
 
@@ -112,6 +112,6 @@ public class JWTFilter implements Filter {
 
     @Override
     public void destroy() {
-        System.out.println("JWTFilter 销毁");
+        System.out.println("JWTFilter 程序关闭销毁");
     }
 }

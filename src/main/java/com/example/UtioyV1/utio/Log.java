@@ -39,6 +39,7 @@ public class Log {
     // 后台线程
     private static volatile boolean running = true;
     private static Thread[] logThreads;
+    private  static long sum;
 
 
 //
@@ -188,7 +189,7 @@ public class Log {
         if (!Config.LOG_FILE_OUTPUT) {
             return false;
         }
-
+        log.setCreate_id(sum++);
 
 
 

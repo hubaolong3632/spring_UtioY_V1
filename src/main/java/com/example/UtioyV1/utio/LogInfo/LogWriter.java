@@ -80,7 +80,7 @@ public class LogWriter {
                     String typeStr = entry.getType() != null ? entry.getType() : "";
                     
                     // 格式：时间 | 日志类别 | 类型 | 日志信息
-                    writer.write(timeStr + " | " + levelStr + " | " + typeStr + " | " + entry.getMessage());
+                    writer.write(timeStr+" | "+entry.getCreate_id() + " | " + levelStr + " | " + typeStr + " | " + entry.getMessage());
                     writer.newLine();
                 }
                 writer.flush(); // 批量刷新

@@ -2,6 +2,7 @@ package com.example.UtioyV1.utio.Filter;
 
 import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Code.ResultCode;
+import com.example.UtioyV1.utio.Code.Role;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.config.FilterTool;
@@ -28,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 第三次及以上：封禁1天
  */
 @Component
-@Order(2)
+@Order(1)
 public class IpFilter implements Filter {
 
     // 存储IP的访问计数和时间窗口
@@ -36,8 +37,8 @@ public class IpFilter implements Filter {
     // 存储IP的封禁信息（封禁结束时间 + 累计封禁次数）
     private final Map<String, IpBlockInfo> ipBlockMap = new ConcurrentHashMap<>();
 
-    // 限流规则常量（测试用：每分钟2次，正式环境改回50）
-    private static final int MAX_REQUEST_PER_MINUTE = 50;
+    // 限流规则常量（测试用：每分钟250次，正式环境改回50）
+    private static final int MAX_REQUEST_PER_MINUTE = 250;
     private static final long TIME_WINDOW = 60 * 1000; // 1分钟时间窗口
 
     // 封禁时长（毫秒，恢复正常测试值）
@@ -52,6 +53,7 @@ public class IpFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        long startA = System.nanoTime(); // 纳秒级起点
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -59,7 +61,7 @@ public class IpFilter implements Filter {
 
         // 获取客户端真实IP
         String userIp = UtioY.getClient_IP(httpRequest);
-        wrappedRequest.addParameter("user_ip", userIp);
+        wrappedRequest.addParameter(Role.user_ip, userIp);
 //        Log.debug("处理IP "+userIp+" 的请求" );
 
         // 1. 检查IP是否处于封禁状态
@@ -91,6 +93,11 @@ public class IpFilter implements Filter {
 
         // 4. 正常放行
         chain.doFilter(wrappedRequest, response);
+
+        double time = (System.nanoTime()-startA)/1_000_000.0; // 获取程序耗时 毫秒
+
+        Log.debug("\n\n========耗时:"+String.format("%.4f", (time/1000))+" 秒 |  "+time+" 毫秒 | QPS:"+(int)(1000/time)+"========");
+
     }
 
     /**
