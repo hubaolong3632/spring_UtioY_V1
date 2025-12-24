@@ -34,7 +34,7 @@ mybatis-plus:
     # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
     call-setters-on-nulls: true
     # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
-    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     cache-enabled: false #关闭二级缓存
 
 ---
@@ -91,7 +91,10 @@ config:
   fileUrl: "xxxxx111"
   current-path: "files"
   currentp-ath1: "files"
-  # 日志配置
+
+---
+# 日志配置
+config:
   log:
     enabled: true              # 是否启用日志输出
     console-output: true       # 是否输出到控制台

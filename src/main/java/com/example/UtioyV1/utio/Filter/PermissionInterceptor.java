@@ -69,7 +69,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
 
 
 
-        if(andJurisdiction!=null){ //如果拥有其中一个权限
+        if(andJurisdiction!=null){ //这个里面的权限必须都得有
             for (String and_key : andJurisdiction) {
                 if (!Role.role_is(jurisdiction+and_key)) { //判断是否有此权限
                     filterTool.send(response, Result.failure(ResultCode.ROLE_NO, "角色没有: "+and_key+"权限"));

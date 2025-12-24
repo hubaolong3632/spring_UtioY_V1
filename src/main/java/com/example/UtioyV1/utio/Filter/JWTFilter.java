@@ -108,6 +108,8 @@ public class JWTFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Log.debug("JWTFilter 初始化完成");
+
+        Log.info("配置L:"+Config.FILE_URL);
     }
 
     @Override

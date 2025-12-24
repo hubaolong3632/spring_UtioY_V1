@@ -5,6 +5,7 @@ import com.example.UtioyV1.utio.Filter.JWTFilter;
 import com.example.UtioyV1.utio.Filter.PermissionInterceptor;
 import com.example.UtioyV1.utio.Log;
 import com.example.UtioyV1.utio.UtioClass.JwtUtio;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.core.env.Environment;
@@ -18,6 +19,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.*;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 import static com.example.UtioyV1.utio.Log.initializeLogThread;
 
 
@@ -28,7 +32,7 @@ import static com.example.UtioyV1.utio.Log.initializeLogThread;
 @EnableScheduling //自动注入yml
 @EnableAsync // 开启异步支持
 @MapperScan("com.example.*.utio.mapper")
-@MapperScan("com.example.*.mapper")
+@MapperScan("com.example.*.mapper") //扫描依赖
 public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
 
@@ -46,6 +50,7 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
     //配置jwt注入
     @Bean("jwt")
+//    @PostConstruct   //所有Beng执行完成后执行
     public Boolean jwt(@Value("${jwt.secret:}")String secret, @Value("${jwt.issuer:}")String issuer){
         JwtUtio.setJWTKey(secret,issuer);
         return true;
@@ -55,7 +60,9 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
     //其他文件注入
     @Bean("text1")
+//    @PostConstruct
     public Boolean text(Config interc){
+        System.out.println("111");
 //        Log.info("输入"+UtioY.JSON(interc));
 //        Log.info("输入"+UtioY.JSON(interc));
 //        Log.error("输入"+UtioY.JSON(interc));
@@ -112,6 +119,9 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
     @Resource
     private FilterTool filterTool;
 
+
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 注册权限拦截器 - 使用和过滤器一样的路径配置
@@ -131,6 +141,9 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
             interceptorRegistration.excludePathPatterns(filterTool.getExcludePaths());
             Log.debug("权限拦截器排除路径: " + filterTool.getExcludePaths());
         }
+
+
+
         
         Log.debug("权限拦截器已注册，路径配置与过滤器一致");
     }
@@ -162,16 +175,41 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
         init.initConfig(); //初始化配置文件
 
 
-        //                Text11 text11 = new Text11();
+        String property = environment.getProperty("config.fileUrl");
+
+        Log.debug("x:"+property);
+
+
+//              Config text11 = new Config();
 //                Class<?> clazz = text11.getClass();
-//                Field[] declaredFields = Text11.class.getDeclaredFields();
-//                for (Field s1 : declaredFields){
-//
+                Field[] declaredFields = Config.class.getDeclaredFields();
+                for (Field s1 : declaredFields){
+                    System.out.println("xx:"+s1.getName());
+
+
+                    // 关键1：设置字段可访问（私有/保护字段必须加，否则抛IllegalAccessException）
+                    s1.setAccessible(true);
+
+                    // 关键2：获取要赋值的值（替换为你的业务逻辑）
+//                    Object value = getString(null, s1.getName());
+
+
+                    // 关键3：区分静态字段和实例字段
+                    if (Modifier.isStatic(s1.getModifiers())) {
+                        // 静态字段：set的第一个参数传null（属于类，无需实例）
+                        s1.set(null, "xxxx");
+                        System.out.println("静态字段[" + s1.getName() + "]赋值完成，值：" + value);
+                    } else {
+                        // 实例字段：set的第一个参数传实例对象
+                        s1.set(config, value);
+                        System.out.println("实例字段[" + s1.getName() + "]赋值完成，值：" + value);
+                    }
+
 //                    Field f1 = clazz.getDeclaredField(s1.getName());
 //                    f1.set(text11,getString(row, s1.getName()) ); // 公有字段也可加setAccessible，不影响
-////                    System.out.println("对象："+s1.getName());
-//                }
-//
+//                    System.out.println("对象："+s1.getName());
+                }
+
 //                System.out.println("t1:  "+text11);
 //
 //
@@ -188,3 +226,17 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
 
 }
+
+
+/**
+ *  反射教程
+ Config text11 = new Config();
+ Class<?> clazz = text11.getClass();
+ Field[] declaredFields = Text11.class.getDeclaredFields();
+ for (Field s1 : declaredFields){
+
+ Field f1 = clazz.getDeclaredField(s1.getName());
+ f1.set(text11,getString(row, s1.getName()) ); // 公有字段也可加setAccessible，不影响
+ //                    System.out.println("对象："+s1.getName());
+ }
+ */

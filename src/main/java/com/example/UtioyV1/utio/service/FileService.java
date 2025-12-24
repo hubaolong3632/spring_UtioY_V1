@@ -1,8 +1,6 @@
 package com.example.UtioyV1.utio.service;
 
-import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClientBuilder;
-import com.aliyun.oss.model.PutObjectRequest;
+
 import com.example.UtioyV1.utio.Code.Config;
 import com.example.UtioyV1.utio.model.FileModel;
 import jakarta.annotation.Resource;

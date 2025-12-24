@@ -1,7 +1,5 @@
 package com.example.UtioyV1.utio.LogInfo;
 
-import com.example.UtioyV1.utio.Code.Config;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -143,7 +141,7 @@ public class LogWriter {
      * 初始化日志目录
      */
     public static void initializeLogDir() {
-        if (Config.LOG_FILE_OUTPUT) {
+        if (LogConfig.LOG_FILE_OUTPUT) {
             File logDir = new File(LOG_DIR);
             if (!logDir.exists()) {
                 logDir.mkdirs();
@@ -161,7 +159,7 @@ public class LogWriter {
             return;
         }
         
-        int keepFiles = Config.LOG_KEEP_FILES;
+        int keepFiles = LogConfig.LOG_KEEP_FILES;
         if (keepFiles <= 0) {
             return; // 如果配置为0或负数，不清理
         }

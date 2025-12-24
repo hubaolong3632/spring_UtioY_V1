@@ -1,17 +1,12 @@
 package com.example.UtioyV1.utio;
 
-import com.example.UtioyV1.utio.Code.Config;
+import com.example.UtioyV1.utio.LogInfo.LogConfig;
 import com.example.UtioyV1.utio.LogInfo.LogEntryModel;
 import com.example.UtioyV1.utio.LogInfo.LogLevel;
 import com.example.UtioyV1.utio.LogInfo.LogQueue;
 import com.example.UtioyV1.utio.LogInfo.LogWriter;
 import com.example.UtioyV1.utio.UtioClass.DateUtio;
-import jakarta.annotation.Resource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,11 +20,11 @@ public class Log {
 
     // 批量写入配置（从配置文件读取，默认值作为后备）
     private static int getBatchSize() {
-        return Config.LOG_BATCH_SIZE > 0 ? Config.LOG_BATCH_SIZE : 100;
+        return LogConfig.LOG_BATCH_SIZE > 0 ? LogConfig.LOG_BATCH_SIZE : 100;
     }
 
     private static long getFlushIntervalMs() {
-        return Config.LOG_FLUSH_INTERVAL_SECONDS > 0 ? Config.LOG_FLUSH_INTERVAL_SECONDS * 1000 : 2000;
+        return LogConfig.LOG_FLUSH_INTERVAL_SECONDS > 0 ? LogConfig.LOG_FLUSH_INTERVAL_SECONDS * 1000 : 2000;
     }
 
     // 写入线程数量（可根据CPU核心数调整）
@@ -56,7 +51,7 @@ public class Log {
 
     public   static void initializeLogThread(){
         // 如果日志未启用，不启动线程
-        if (!Config.LOG_ENABLED) {
+        if (!LogConfig.LOG_ENABLED) {
             return;
         }
 //        System.out.println("启动");
@@ -65,7 +60,7 @@ public class Log {
         LogWriter.initializeLogDir();
 
         // 如果文件输出未启用，不启动写入线程
-        if (!Config.LOG_FILE_OUTPUT) {
+        if (!LogConfig.LOG_FILE_OUTPUT) {
             return;
         }
 
@@ -162,12 +157,12 @@ public class Log {
     private static boolean addLog(LogEntryModel log) {
 //        LogLevel level, String msg, String type
         // 如果日志未启用，直接返回
-        if (!Config.LOG_ENABLED) {
+        if (!LogConfig.LOG_ENABLED) {
             return false;
         }
 
         // 检查该日志级别是否启用
-        Boolean levelEnabled = Config.LOG_LEVELS_ENABLED.get(log.getLevel().getValue());
+        Boolean levelEnabled = LogConfig.LOG_LEVELS_ENABLED.get(log.getLevel().getValue());
         if (levelEnabled == null || !levelEnabled) {
             return false; // 该级别未启用，直接返回
         }
@@ -175,7 +170,7 @@ public class Log {
         log.setCreate_time(new Date()); //设置日志时间
 
         // 根据配置决定是否输出到控制台
-        if (Config.LOG_CONSOLE_OUTPUT) {
+        if (LogConfig.LOG_CONSOLE_OUTPUT) {
             String back_code = getString(log);
             System.out.println(
                         "\033[32m" + DateUtio.dateDay_String(log.getCreate_time()) + "\033[0m | " +  // 时间保持绿色（可按需改回蓝色）
@@ -186,7 +181,7 @@ public class Log {
         }
 
         // 如果文件输出未启用，不添加到队列
-        if (!Config.LOG_FILE_OUTPUT) {
+        if (!LogConfig.LOG_FILE_OUTPUT) {
             return false;
         }
         log.setCreate_id(sum++);
@@ -196,7 +191,7 @@ public class Log {
         // 添加到队列（非阻塞，如果队列满则丢弃）
         if (!LogQueue.offer(log)) {
             // 队列满时的处理：记录警告并丢弃
-            if (Config.LOG_CONSOLE_OUTPUT) {
+            if (LogConfig.LOG_CONSOLE_OUTPUT) {
                 System.err.println("WARNING: Log queue is full (" + LogQueue.size() + "), dropping log: " +
                                  (log.getMessage().length() > 100 ? log.getMessage().substring(0, 100) + "..." : log.getMessage()));
             }
