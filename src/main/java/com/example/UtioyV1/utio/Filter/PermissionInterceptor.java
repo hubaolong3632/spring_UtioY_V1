@@ -48,7 +48,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
             return true;
         }
 
-//v1
+//v1sa
         // 获取注解中的权限要求
 
 //        获取需要的那几个权限
