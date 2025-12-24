@@ -19,17 +19,29 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/auth")
 public class UserController  extends UserMsgModel {
+
+
+    /**
+     * 注册用户
+     * @param b1
+     * @return
+     */
     @RequestMapping("/login")
     public Result text1(boolean b1){
 
-        String s = UtioY.JWT_Create("jwt", new JWTModel("1233", "zs", "22"));
+        String s = UtioY.JWT_Create("jwt", new JWTModel("1233", "zs", "admin"));
 
         return Result.success(s);
     }
 
-
+    /**
+     * 权限测试
+     * @param user_id
+     * @param b1
+     * @return
+     */
     @RequestMapping("/text1")
-    @UserRole({"material:delete","material:delete"}) //用户需要的权限
+    @UserRole(value = {"material:from","v2:text2"},and = {"material:update","material:delete"}) //用户需要的权限
     public Result text11(Integer user_id,boolean b1){
 
         Log.error("瞅瞅"+user_id);

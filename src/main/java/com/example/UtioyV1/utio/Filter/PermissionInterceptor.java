@@ -5,6 +5,7 @@ import com.example.UtioyV1.utio.Code.Result;
 import com.example.UtioyV1.utio.Code.ResultCode;
 import com.example.UtioyV1.utio.Code.Role;
 import com.example.UtioyV1.utio.Log;
+import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.config.FilterTool;
 import com.example.UtioyV1.utio.model.JWTDatasModel;
 import com.example.UtioyV1.utio.model.JWTModel;
@@ -12,6 +13,7 @@ import com.example.UtioyV1.utio.model.UserRole;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -48,85 +50,45 @@ public class PermissionInterceptor implements HandlerInterceptor {
             return true;
         }
 
-//v1sa//
-        // 获取注解中的权限要求
 
-//        获取需要的那几个权限
+    // 获取需要的那几个权限
         String[] orJurisdiction = userRole.value();
-//        获取一定需要的权限
+    // 获取一定需要的权限
         String[] andJurisdiction = userRole.and();
 
 
+        String jurisdiction = UtioY.JWT_getUser(request).getJurisdiction()+":";
+//        System.out.println("用户权限"+jurisdiction);
 
         if(orJurisdiction!=null){ //如果拥有其中一个权限
-
+            boolean bol=false;
             for (String or_key : orJurisdiction) {
-                if (Role.role_is(or_key)) { //判断是否有此权限
-                    return true;
+                System.out.println(or_key);
+                if (Role.role_is(jurisdiction+or_key)) { //判断是否有此权限
+                    bol=true; //有一个满足就可以了
+                    break;
                 }
             }
-            return false;
-
-
-            filterTool.send(response, Result.failure(ResultCode.TONKEN_NO, "角色不匹配，需要: " + requiredName));
-            return false;
-        }
-
-        // 1. 校验角色名称（name）
-        if (requiredName != null && !requiredName.isEmpty()) {
-            String userName = jwtModel.getName();
-            if (!requiredName.equals(userName)) {
-                filterTool.send(response, Result.failure(ResultCode.TONKEN_NO, "角色不匹配，需要: " + requiredName));
+            if(bol==false){//如果无权限
+                filterTool.send(response, Result.failure(ResultCode.ROLE_NO, "角色没有对应权限: "+String.join(",", orJurisdiction)));
                 return false;
             }
         }
 
-        // 2. 校验权限代码（code）- 如果需要的话
-        if (requiredCode != null && !requiredCode.isEmpty()) {
-            // 这里可以根据实际需求添加 code 校验逻辑
-            // 例如：检查 jwtModel 中是否有对应的 code
-        }
 
-        // 3. 校验权限列表（permissions）
-        if (requiredPermissions != null && requiredPermissions.length > 0) {
-            // 获取用户拥有的权限列表（根据用户的 name 从 Role.role_list 中获取）
-            String userName = jwtModel.getName();
-            List<String> userPermissions = Role.role_list.get(userName);
 
-            if (userPermissions == null || userPermissions.isEmpty()) {
-                filterTool.send(response, Result.failure(ResultCode.TONKEN_NO, "用户没有权限"));
-                return false;
-            }
-
-            // 检查用户是否拥有所有要求的权限（优化：先检查直接匹配，再检查完整key）
-            for (String permission : requiredPermissions) {
-                boolean hasPermission = false;
-
-                // 方式1：直接匹配（权限名称完全一致）- O(n)，但通常很快
-                if (userPermissions.contains(permission)) {
-                    hasPermission = true;
-                } else {
-                    // 方式2：构建完整权限 key 进行匹配（格式：name:permission）
-                    String fullPermissionKey = userName + ":" + permission;
-                    if (Role.jurisdiction_map.containsKey(fullPermissionKey)) {
-                        // 检查用户权限列表中是否包含该权限的完整名称
-                        for (String userPerm : userPermissions) {
-                            if (userPerm.equals(permission) || userPerm.endsWith(":" + permission)) {
-                                hasPermission = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (!hasPermission) {
-                    filterTool.send(response, Result.failure(ResultCode.TONKEN_NO,
-                        "权限不足，缺少权限: " + permission + "，需要权限: " + Arrays.toString(requiredPermissions)));
-                    return false;
+        if(andJurisdiction!=null){ //如果拥有其中一个权限
+            for (String and_key : andJurisdiction) {
+                if (!Role.role_is(jurisdiction+and_key)) { //判断是否有此权限
+                    filterTool.send(response, Result.failure(ResultCode.ROLE_NO, "角色没有: "+and_key+"权限"));
+                   return false;
                 }
             }
 
         }
+
+
+
 
         // 权限校验通过
         return true;

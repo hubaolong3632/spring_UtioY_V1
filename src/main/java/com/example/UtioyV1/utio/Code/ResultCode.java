@@ -9,12 +9,15 @@ import java.util.List;
  */
 public enum ResultCode {
 
+
     /*失败错误码*/
     IP_NO(-11, "ip已封禁"),
 
     SUCCESS_NO_Show(-10, "错误"),
+    ROLE_NO(-6, "权限不足"),
 
     TONKEN_NO(-5, "token失效"),
+
     SUCCESS_NO(-4, "失败"),
 
     USER_NO(-3, "账号未注册"),
