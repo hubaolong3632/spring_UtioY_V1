@@ -1,0 +1,140 @@
+[33mcommit 573fe1b1aa0189275b2df462c266ce00e39ce303[m
+Author: hubaolong@lv-ju.com <hubaolong@lv-ju.com>
+Date:   Thu Dec 18 17:36:48 2025 +0800
+
+    text33
+
+[1mdiff --git a/src/main/java/com/example/UtioyV1/utio/UtioClass/DateUtio.java b/src/main/java/com/example/UtioyV1/utio/UtioClass/DateUtio.java[m
+[1mindex 5539a88..f0cfa23 100644[m
+[1m--- a/src/main/java/com/example/UtioyV1/utio/UtioClass/DateUtio.java[m
+[1m+++ b/src/main/java/com/example/UtioyV1/utio/UtioClass/DateUtio.java[m
+[36m@@ -10,26 +10,22 @@[m [mimport java.util.Date;[m
+ public class DateUtio {[m
+  private  static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 时间格式式[m
+     public static String dateDay_String(){ //获取当前在线时间[m
+[31m-        String customDateStr = dateFormat.format(new Date());[m
+[31m-        return customDateStr; //返回时间[m
+[32m+[m[32m        return dateFormat.format(new Date()); //返回时间[m
+     }[m
+ [m
+     public static String dateDay_String(Date date){ //获取当前在线时间[m
+[31m-        String customDateStr = dateFormat.format(date);[m
+[31m-        return customDateStr; //返回时间[m
+[32m+[m[32m        return dateFormat.format(date); //返回时间[m
+     }[m
+ [m
+     public static LocalDateTime dateDay_Date(){ //获取当前在线时间[m
+[31m-        LocalDateTime localDateTime = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();[m
+[31m-        return localDateTime; //返回时间[m
+[32m+[m[32m        return new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(); //返回时间[m
+     }[m
+ [m
+     public static Date dateDay_Date(Long day){ //获取增加指定时长后的时间[m
+         Date now = new Date();[m
+         Instant instant = now.toInstant();[m
+         Instant nextWeekInstant = instant.plus(day, ChronoUnit.DAYS); // 加一天[m
+[31m-        Date nextWeekWithJava8 = Date.from(nextWeekInstant);[m
+[31m-        return nextWeekWithJava8;[m
+[32m+[m[32m        return Date.from(nextWeekInstant);[m
+     }[m
+ [m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/com/example/UtioyV1/utio/UtioClass/JsonUtio.java b/src/main/java/com/example/UtioyV1/utio/UtioClass/JsonUtio.java[m
+[1mindex 946452a..ceae4bd 100644[m
+[1m--- a/src/main/java/com/example/UtioyV1/utio/UtioClass/JsonUtio.java[m
+[1m+++ b/src/main/java/com/example/UtioyV1/utio/UtioClass/JsonUtio.java[m
+[36m@@ -11,8 +11,8 @@[m [mimport java.util.List;[m
+ //JSON格式的操作指南[m
+ public class JsonUtio {[m
+     public static String JSON(Object obj) { //传输json格式[m
+[31m-        String json = com.alibaba.fastjson2.JSON.toJSONString(obj); //序列化[m
+[31m-        return json;[m
+[32m+[m[32m        //序列化[m
+[32m+[m[32m        return com.alibaba.fastjson2.JSON.toJSONString(obj);[m
+     }[m
+ [m
+     public static <T> T JSON_COPY(T data) { //深拷贝不支持集合[m
+[1mdiff --git a/src/main/java/com/example/UtioyV1/utio/config/WebMvcBeanConfig.java b/src/main/java/com/example/UtioyV1/utio/config/WebMvcBeanConfig.java[m
+[1mindex 1012e66..5f9b28a 100644[m
+[1m--- a/src/main/java/com/example/UtioyV1/utio/config/WebMvcBeanConfig.java[m
+[1m+++ b/src/main/java/com/example/UtioyV1/utio/config/WebMvcBeanConfig.java[m
+[36m@@ -36,6 +36,9 @@[m [mimport static com.example.UtioyV1.utio.Log.initializeLogThread;[m
+ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {[m
+ [m
+ [m
+[32m+[m[32m    @Autowired[m
+[32m+[m[32m    private Config config;[m
+[32m+[m
+     //允许所有请求跨域[m
+     @Override[m
+     public void addCorsMappings(CorsRegistry registry) {[m
+[36m@@ -120,6 +123,7 @@[m [mpublic class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {[m
+     @Override[m
+     @Async //异步导入[m
+     public void run(String... args) throws Exception {[m
+[32m+[m
+         // 获取激活的配置文件[m
+         String[] activeProfiles = environment.getActiveProfiles();[m
+         String activeProfilesStr = activeProfiles.length > 0[m
+[36m@@ -138,6 +142,25 @@[m [mpublic class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {[m
+ [m
+ [m
+ [m
+[32m+[m
+[32m+[m[32m        //                Text11 text11 = new Text11();[m
+[32m+[m[32m//                Class<?> clazz = text11.getClass();[m
+[32m+[m[32m//                Field[] declaredFields = Text11.class.getDeclaredFields();[m
+[32m+[m[32m//                for (Field s1 : declaredFields){[m
+[32m+[m[32m//[m
+[32m+[m[32m//                    Field f1 = clazz.getDeclaredField(s1.getName());[m
+[32m+[m[32m//                    f1.set(text11,getString(row, s1.getName()) ); // 公有字段也可加setAccessible，不影响[m
+[32m+[m[32m////                    System.out.println("对象："+s1.getName());[m
+[32m+[m[32m//                }[m
+[32m+[m[32m//[m
+[32m+[m[32m//                System.out.println("t1:  "+text11);[m
+[32m+[m[32m//[m
+[32m+[m[32m//[m
+[32m+[m[32m//                if(1==1){[m
+[32m+[m[32m//                    return;[m
+[32m+[m[32m//                }[m
+[32m+[m
+[32m+[m
+ //      启动日志[m
+         initializeLogThread();[m
+ [m
+[1mdiff --git a/src/main/java/com/example/UtioyV1/utio/controller/UserController.java b/src/main/java/com/example/UtioyV1/utio/controller/UserController.java[m
+[1mindex a3dd6c9..a2921e4 100644[m
+[1m--- a/src/main/java/com/example/UtioyV1/utio/controller/UserController.java[m
+[1m+++ b/src/main/java/com/example/UtioyV1/utio/controller/UserController.java[m
+[36m@@ -17,7 +17,7 @@[m [mpublic class UserController  extends UserMsgModel {[m
+     @RequestMapping("/login")[m
+     public Result text1(boolean b1){[m
+ [m
+[31m-        String s = UtioY.JWT_Create("jwt", new JWTModel(12312, "zs", "22"));[m
+[32m+[m[32m        String s = UtioY.JWT_Create("jwt", new JWTModel("1233", "zs", "22"));[m
+ [m
+         return Result.success(s);[m
+     }[m
+[1mdiff --git a/src/main/java/com/example/UtioyV1/utio/model/JWTModel.java b/src/main/java/com/example/UtioyV1/utio/model/JWTModel.java[m
+[1mindex 873ccd0..4a5cc0d 100644[m
+[1m--- a/src/main/java/com/example/UtioyV1/utio/model/JWTModel.java[m
+[1m+++ b/src/main/java/com/example/UtioyV1/utio/model/JWTModel.java[m
+[36m@@ -19,7 +19,7 @@[m [mimport java.util.List;[m
+ public class JWTModel {[m
+ [m
+ [m
+[31m-    private Integer id; //用户数据库id[m
+[32m+[m[32m    private String id; //用户数据库id 可能为uuid所以用string[m
+     private String username; //用户账号[m
+     private String name; //用户姓名[m
+     private String openid; //用户唯一id[m
+[36m@@ -31,7 +31,7 @@[m [mpublic class JWTModel {[m
+     public JWTModel() {[m
+     }[m
+ [m
+[31m-    public JWTModel(Integer id, String name, String jurisdiction) {[m
+[32m+[m[32m    public JWTModel(String id, String name, String jurisdiction) {[m
+         this.id = id;[m
+         this.name = name;[m
+         this.jurisdiction = jurisdiction;[m

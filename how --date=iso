@@ -1,0 +1,22 @@
+[33m211039e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: rebase (finish): returning to refs/heads/master
+[33m211039e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{1}: rebase (start): checkout 211039e9b5ddf4898ef0ff912a880bf3955fe0c1
+[33m2cab9a3[m HEAD@{2}: rebase (finish): returning to refs/heads/master
+[33m2cab9a3[m HEAD@{3}: rebase (start): checkout 2cab9a3d22de1dbf7c4aa9097622d7c95697317a
+[33m4f2eeda[m HEAD@{4}: rebase (finish): returning to refs/heads/master
+[33m4f2eeda[m HEAD@{5}: rebase (start): checkout 4f2eedadb7f8820d8c62ea9e9b6c965fec8c4fc7
+[33m2c8c65e[m HEAD@{6}: commit: text33
+[33m4f2eeda[m HEAD@{7}: commit: text33
+[33m2cab9a3[m HEAD@{8}: commit: text33
+[33m211039e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{9}: commit: text33
+[33m573fe1b[m HEAD@{10}: commit: text33
+[33ma30511c[m HEAD@{11}: commit: text33
+[33m4e94755[m HEAD@{12}: commit: text33
+[33m607a698[m HEAD@{13}: commit: text33
+[33md2f5e29[m HEAD@{14}: commit: text33
+[33m4a2d737[m HEAD@{15}: commit: text33
+[33m44ed677[m HEAD@{16}: commit: text33
+[33m7454e3d[m HEAD@{17}: commit: text33
+[33m21cabf6[m HEAD@{18}: commit: text33
+[33m16abf1d[m HEAD@{19}: commit: text33
+[33md6a7117[m HEAD@{20}: commit: text33
+[33m8512b2f[m HEAD@{21}: commit: text33

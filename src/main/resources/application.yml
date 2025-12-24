@@ -109,11 +109,5 @@ config:
 ---
 
 
-# 阿里云OSS配置 demo-utioy.oss-cn-hangzhou.aliyuncs.com
 
-aliyun:
-  oss:
-    endpoint: oss-cn-hangzhou.aliyuncs.com
-    access-key-id: LTAI5tE1bhHEEgjmQ925R3aD
-    access-key-secret: FWuuvL5QtHU4mnkBBXLOriloMypatw
-    bucket-name: demo-utioy  #桶名
+
