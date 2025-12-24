@@ -33,7 +33,7 @@ public class UserController  extends UserMsgModel {
     @RequestMapping("/login")
     public Result text1(boolean b1){
 
-//
+/// /
 
         Date expiration = new Date(System.currentTimeMillis() + JwtUtio.EXPIRATION_TIME); //当前时间加一周
         String jwt = JwtUtio.JWTCreate(expiration,new JWTModel("1233", "zs", "admin"));
