@@ -36,8 +36,6 @@ public class ConfigController {
     public Result init(){
 
         return  Result.utio(init.initConfig(),"更新配置文件成功","数据库为空");
-
-
     }
 
     /**

@@ -198,17 +198,24 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
                     if (Modifier.isStatic(s1.getModifiers())) {
                         // 静态字段：set的第一个参数传null（属于类，无需实例）
                         s1.set(null, "xxxx");
-                        System.out.println("静态字段[" + s1.getName() + "]赋值完成，值：" + value);
+                        System.out.println("======赋值========");
+                        System.out.println(Config.CLAIMS_JWS_ATTRIBUTE);
+                        System.out.println(Config.FILE_URL);
+                        System.out.println(Config.currentPath);
+//                        System.out.println("静态字段[" + s1.getName() + "]赋值完成，值：" );
                     } else {
                         // 实例字段：set的第一个参数传实例对象
-                        s1.set(config, value);
-                        System.out.println("实例字段[" + s1.getName() + "]赋值完成，值：" + value);
+                        s1.set("11", "xxxx2");
+//                        System.out.println("实例字段[" + s1.getName() + "]赋值完成，值：" + value);
                     }
+
 
 //                    Field f1 = clazz.getDeclaredField(s1.getName());
 //                    f1.set(text11,getString(row, s1.getName()) ); // 公有字段也可加setAccessible，不影响
 //                    System.out.println("对象："+s1.getName());
                 }
+
+
 
 //                System.out.println("t1:  "+text11);
 //
