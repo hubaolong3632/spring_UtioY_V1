@@ -1,10 +1,13 @@
 package com.example.UtioyV1.utio.config;
 
 import com.example.UtioyV1.utio.Code.Config;
+import com.example.UtioyV1.utio.Code.Role;
 import com.example.UtioyV1.utio.Filter.JWTFilter;
 import com.example.UtioyV1.utio.Filter.PermissionInterceptor;
 import com.example.UtioyV1.utio.Log;
+import com.example.UtioyV1.utio.UtioClass.ApiUtio;
 import com.example.UtioyV1.utio.UtioClass.JwtUtio;
+import com.example.UtioyV1.utio.UtioY;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import org.mybatis.spring.annotation.MapperScan;
@@ -21,6 +24,10 @@ import org.springframework.web.servlet.config.annotation.*;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 import static com.example.UtioyV1.utio.Log.initializeLogThread;
 
@@ -35,6 +42,37 @@ import static com.example.UtioyV1.utio.Log.initializeLogThread;
 @MapperScan("com.example.*.mapper") //扫描依赖
 public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
+
+        //返回公钥
+//        @Async //异步调用
+//        @Bean
+//        public PublicKey publicKeyClass(){
+//            PublicKey publicKey=null;
+//
+//
+//            if(Config.MicroService==true){ //判断是否开启微服务调用
+//
+//                ApiUtio.API_get("http://127.0.0.1:1111");
+//
+//
+//
+//                    String JwtKeyConfig= Role.JwtKeyConfig; //这个是公钥
+//                    byte[] publicKeyBytes = Base64.getDecoder().decode(JwtKeyConfig);
+//                    X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicKeyBytes);
+//
+//                    try{
+//                        publicKey = KeyFactory.getInstance("RSA").generatePublic(publicKeySpec);
+//                        Role.publicKey=publicKey;
+//                        Log.info("微服务公钥配置完成");
+//                    }catch (Exception e){
+//                        System.out.println("请配置正确的公钥");
+//                        e.printStackTrace();
+//                    }
+//
+//            }
+//
+//            return publicKey;
+//        }
 
 
     //允许所有请求跨域
@@ -174,61 +212,118 @@ public class WebMvcBeanConfig implements WebMvcConfigurer, CommandLineRunner {
 
         init.initConfig(); //初始化配置文件
 
+//
+//        String property = environment.getProperty("config.fileUrl");
+//
+//        Log.debug("x:"+property);
 
-        String property = environment.getProperty("config.fileUrl");
 
-        Log.debug("x:"+property);
-
-
-//              Config text11 = new Config();
-//                Class<?> clazz = text11.getClass();
                 Field[] declaredFields = Config.class.getDeclaredFields();
                 for (Field s1 : declaredFields){
-                    System.out.println("xx:"+s1.getName());
+
+                    Class<?> type = s1.getType();
+                    if(!isTargetFieldType(type)){ //如果不是基本包装类就不要
+                        continue;
+                    }
+                    String daoValue = Config.getDaoValue(s1.getName());
 
 
-                    // 关键1：设置字段可访问（私有/保护字段必须加，否则抛IllegalAccessException）
+                    if(daoValue==null) continue; //如果为空的话就跳过当前循环
+
+//                    System.out.println("类别:"+type);
+//                    System.out.println("对象:"+s1.getName());
+//                    System.out.println(daoValue);
+
+
+                    // 关键1：设置字段可访问
                     s1.setAccessible(true);
 
-                    // 关键2：获取要赋值的值（替换为你的业务逻辑）
-//                    Object value = getString(null, s1.getName());
-
-
-                    // 关键3：区分静态字段和实例字段
+//                判断是否是静态字段
                     if (Modifier.isStatic(s1.getModifiers())) {
-                        // 静态字段：set的第一个参数传null（属于类，无需实例）
-                        s1.set(null, "xxxx");
-                        System.out.println("======赋值========");
-                        System.out.println(Config.CLAIMS_JWS_ATTRIBUTE);
-                        System.out.println(Config.FILE_URL);
-                        System.out.println(Config.currentPath);
-//                        System.out.println("静态字段[" + s1.getName() + "]赋值完成，值：" );
-                    } else {
-                        // 实例字段：set的第一个参数传实例对象
-                        s1.set("11", "xxxx2");
-//                        System.out.println("实例字段[" + s1.getName() + "]赋值完成，值：" + value);
+                        // 4. 核心：将字符串"true"转为字段对应类型的值
+                        Object targetValue = convertStringToTargetType(daoValue, type);
+                        // 5. 赋值（此时值的类型与字段类型完全匹配）
+                        s1.set(null, targetValue);
+
+
+//                        System.out.println("======赋值========");
+//                        System.out.println(Config.CLAIMS_JWS_ATTRIBUTE);
+//                        System.out.println(Config.FILE_URL);
+//                        System.out.println(Config.currentPath);
+//                        System.out.println(Config.d1);
+//                        System.out.println(Config.t1);
+//                        System.out.println(Config.ll);
                     }
-
-
-//                    Field f1 = clazz.getDeclaredField(s1.getName());
-//                    f1.set(text11,getString(row, s1.getName()) ); // 公有字段也可加setAccessible，不影响
-//                    System.out.println("对象："+s1.getName());
                 }
-
-
-
-//                System.out.println("t1:  "+text11);
-//
-//
-//                if(1==1){
-//                    return;
-//                }
 
 
 //      启动日志
         initializeLogThread();
 
 
+    }
+
+
+
+    // 核心：判断字段类型是否是目标类型（String + 基本类型 + 包装类）  如果是就返回true
+    private static boolean isTargetFieldType(Class<?> fieldType) {
+        return fieldType == String.class                // String 类型
+                || fieldType == int.class || fieldType == Integer.class // int/Integer
+                || fieldType == float.class || fieldType == Float.class // float/Float
+                || fieldType == double.class || fieldType == Double.class // double/Double
+                || fieldType == boolean.class || fieldType == Boolean.class; // boolean/Boolean
+    }
+
+
+    // 核心工具方法：将字符串转为指定类型的值
+    private static Object convertStringToTargetType(String strValue, Class<?> targetType) {
+        // 空值处理（可选，根据业务调整）
+        if (strValue == null) {
+            return null;
+        }
+
+        // 1. String 类型：直接返回原字符串
+        if (targetType == String.class) {
+            return strValue;
+        }
+
+        // 2. boolean/Boolean 类型：字符串转布尔值（兼容 true/TRUE/1，false/FALSE/0）
+        if (targetType == boolean.class || targetType == Boolean.class) {
+            return "true".equalsIgnoreCase(strValue) || "1".equals(strValue);
+        }
+
+        // 3. int/Integer 类型：字符串转整型（转换失败返回默认值0）
+        if (targetType == int.class || targetType == Integer.class) {
+            try {
+                return Integer.parseInt(strValue);
+            } catch (NumberFormatException e) {
+                Log.error("字符串[" + strValue + "]转整型失败，赋值默认值0");
+                return 0;
+            }
+        }
+
+        // 4. float/Float 类型：字符串转浮点型（转换失败返回默认值0.0f）
+        if (targetType == float.class || targetType == Float.class) {
+            try {
+                return Float.parseFloat(strValue);
+            } catch (NumberFormatException e) {
+                Log.error("字符串[" + strValue + "]转浮点型失败，赋值默认值0.0f");
+                return 0.0f;
+            }
+        }
+
+        // 5. double/Double 类型：字符串转双精度型（转换失败返回默认值0.0d）
+        if (targetType == double.class || targetType == Double.class) {
+            try {
+                return Double.parseDouble(strValue);
+            } catch (NumberFormatException e) {
+               Log.error("字符串[" + strValue + "]转双精度型失败，赋值默认值0.0d");
+                return 0.0d;
+            }
+        }
+
+        // 非目标类型（实际不会走到这里，因为前面已过滤）
+        return null;
     }
 
 

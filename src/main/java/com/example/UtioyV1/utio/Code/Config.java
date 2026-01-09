@@ -17,6 +17,12 @@ import java.util.function.BiFunction;
 @Data  // 添加 Lombok
 public class Config {
 
+    //是否开启微服务auth2.0 此方法不能从数据库中拿取
+    public static Boolean MicroService =true;
+
+//    远程微服务oauth2地址(但是这个应该是注册中心的地址)
+    public static String service_url ="http://127.0.0.1:1111";
+
 
 
     // static 字段（给其他地方直接用）
@@ -34,6 +40,12 @@ public class Config {
     public static Map<String,String> DAO_VALUE = new HashMap<>(50);
     public static Boolean IS_DAO =false; //判断数据库是否已经加载完成
 
+
+
+
+//    public static Double d1;
+//    public static Integer t1;
+//    public static int  ll;
 
 
     //    通过key拿到value

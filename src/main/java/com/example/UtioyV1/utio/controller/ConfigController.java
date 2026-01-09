@@ -35,7 +35,7 @@ public class ConfigController {
     @RequestMapping("/init")
     public Result init(){
 
-        return  Result.utio(init.initConfig(),"更新配置文件成功","数据库为空");
+        return  Result.utio(init.initConfig(),"更新配置文件成功","数据库为空/微服务错误");
     }
 
     /**

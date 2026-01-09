@@ -1,6 +1,8 @@
 package com.example.UtioyV1.utio.UtioClass;
 
 
+import com.example.UtioyV1.utio.Code.Config;
+import com.example.UtioyV1.utio.Code.Role;
 import com.example.UtioyV1.utio.UtioY;
 import com.example.UtioyV1.utio.model.JWTDatasModel;
 import com.example.UtioyV1.utio.model.JWTModel;
@@ -50,21 +52,32 @@ public class JwtUtio {
     }
 
 
+
+
+
     // 解析 JWT
     public static JWTDatasModel JWTAnalysis(String jwt) {
         try{
-            Claims claims = Jwts.parser()
-                    .setSigningKey(SECRET) //放入秘钥
-                    .parseClaimsJws(jwt) //放入需要解析的串
-                    .getBody();
+            Claims claims =null;
+            if(Config.MicroService==true){ //如果开启微服务调用
+                claims = Jwts.parserBuilder()
+                        .setSigningKey(Role.publicKey)  // 对于 RS256，使用 setSigningKey() 设置公钥进行验证
+                        .build()
+                        .parseClaimsJws(jwt).getBody();
+            }else {
+                claims = Jwts.parserBuilder()
+                        .setSigningKey(SECRET) //放入秘钥
+                        .build() // 构建解析器
+                        .parseClaimsJws(jwt) //放入需要解析的串
+                        .getBody();
+            }
+
 
             JWTDatasModel jwtDatasModel = new JWTDatasModel();
             jwtDatasModel.setSubject(claims.getSubject());  //标识用户的唯一标识id
             jwtDatasModel.setExpiration(claims.getExpiration()); //标识过期时间
             jwtDatasModel.setIssuer(claims.getIssuer());  //标识颁布者
             jwtDatasModel.setJwtmodel(UtioY.JSON_ObjectType(claims.get("jwtmodel",String.class),JWTModel.class));  //获取jwt参数里面放入的值
-
-
             return jwtDatasModel;
 
         } catch (ExpiredJwtException e) {
@@ -101,48 +114,8 @@ public class JwtUtio {
 
 
 
-//
-////    新版jwt解析
-//@Resource
-//public PublicKey publicKey;
-//
-//    @Override
-//    public Jws<Claims> jwtOauth(String jwt) {
-//        // 去除 "Bearer " 前缀
-//        jwt = jwt.replaceAll("Bearer ", "").trim();
-//
-//        // 验证JWT token
-//        try {
-//            // 使用新的 API：parserBuilder() 替代已弃用的 parser()
-//            // 注意：在 jjwt 0.11.5 中，setSigningKey() 在 parserBuilder() 中仍然可用
-//            // verifyWith() 方法在 0.12.0+ 版本才引入，且主要用于对称密钥
-//            // 对于 RS256 算法使用 PublicKey，应使用 setSigningKey()
-//            Jws<Claims> jws = Jwts.parserBuilder()
-//                    .setSigningKey(publicKey)  // 对于 RS256，使用 setSigningKey() 设置公钥进行验证
-//                    .build()
-//                    .parseClaimsJws(jwt);
-//            return jws;
-//
-//        } catch (ExpiredJwtException e) {
-//            // 令牌已过期
-//            throw new TokenException("令牌已过期，请重新登录");
-//        } catch (UnsupportedJwtException e) {
-//            // 不支持的 JWT 格式
-//            throw new TokenException("不支持的令牌格式");
-//        } catch (MalformedJwtException e) {
-//            // 令牌格式错误
-//            throw new TokenException("令牌格式不正确");
-//        } catch (io.jsonwebtoken.security.SignatureException e) {
-//            // 签名验证失败（如秘钥不匹配）
-//            throw new TokenException("令牌签名无效");
-//        } catch (IllegalArgumentException e) {
-//            // 参数错误（如 JWT 字符串为空）
-//            throw new TokenException("令牌参数错误");
-//        } catch (Exception e) {
-//            // 其他未知错误
-//            throw new TokenException("认证失败，请检查令牌");
-//        }
-//    }
+
+
 
 }
 

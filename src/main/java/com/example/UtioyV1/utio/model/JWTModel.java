@@ -6,6 +6,7 @@ package com.example.UtioyV1.utio.model;
 //import lombok.Data;
 
 import com.example.UtioyV1.utio.Code.Role;
+import com.example.UtioyV1.utio.UtioY;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -24,6 +25,7 @@ public class JWTModel {
     private String role; //权限
 //    private Map<String,String> jurisdiction_map=new HashMap<>(); //权限列表
     private Long past_time; //过期时间
+    private String uuid; //随机id
 
 
     public JWTModel() {
@@ -33,6 +35,7 @@ public class JWTModel {
         this.id = id;
         this.name = name;
         this.role = jurisdiction;
+        this.uuid = UtioY.Random_string20(); //随机id
     }
 
 

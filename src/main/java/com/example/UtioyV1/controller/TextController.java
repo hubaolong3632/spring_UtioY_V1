@@ -25,4 +25,12 @@ public class TextController {
 
         return "hello world";
     }
+
+    @RequestMapping("/api/v1")
+    public String text2()  {
+
+
+            Log.info("解析使用api");
+            return "hello world111";
+    }
 }

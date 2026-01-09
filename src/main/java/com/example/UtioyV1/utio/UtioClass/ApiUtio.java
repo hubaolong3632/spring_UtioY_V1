@@ -87,7 +87,7 @@ public class ApiUtio {
             return text;  //返回最终结果
 
         } catch (IOException e) {
-            throw new ReturnException(e.getMessage());
+            throw new ReturnException("服务器请求失败:"+e.getMessage());
         }
     }
 
@@ -119,6 +119,7 @@ public class ApiUtio {
         Connection connection = Jsoup.connect(url)
                 .header("Content-Type", "application/json")
                 .header("Connection", "keep-alive")
+                .timeout(60000) //超时时间为1分钟
                 .ignoreContentType(true) //忽略所有请求参数
                 .ignoreHttpErrors(true);   //忽略所有异常
 
