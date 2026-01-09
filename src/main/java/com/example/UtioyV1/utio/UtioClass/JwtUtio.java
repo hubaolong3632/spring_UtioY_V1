@@ -6,7 +6,9 @@ import com.example.UtioyV1.utio.model.JWTDatasModel;
 import com.example.UtioyV1.utio.model.JWTModel;
 import com.example.UtioyV1.utio.service.TokenException;
 import io.jsonwebtoken.*;
+import jakarta.annotation.Resource;
 
+import java.security.PublicKey;
 import java.util.Date;
 public class JwtUtio {
 
@@ -28,8 +30,6 @@ public class JwtUtio {
         if(!issuer.isEmpty()){
             JwtUtio.ISSUER =issuer;
         }
-
-
     }
 
 
@@ -101,6 +101,48 @@ public class JwtUtio {
 
 
 
+//
+////    新版jwt解析
+//@Resource
+//public PublicKey publicKey;
+//
+//    @Override
+//    public Jws<Claims> jwtOauth(String jwt) {
+//        // 去除 "Bearer " 前缀
+//        jwt = jwt.replaceAll("Bearer ", "").trim();
+//
+//        // 验证JWT token
+//        try {
+//            // 使用新的 API：parserBuilder() 替代已弃用的 parser()
+//            // 注意：在 jjwt 0.11.5 中，setSigningKey() 在 parserBuilder() 中仍然可用
+//            // verifyWith() 方法在 0.12.0+ 版本才引入，且主要用于对称密钥
+//            // 对于 RS256 算法使用 PublicKey，应使用 setSigningKey()
+//            Jws<Claims> jws = Jwts.parserBuilder()
+//                    .setSigningKey(publicKey)  // 对于 RS256，使用 setSigningKey() 设置公钥进行验证
+//                    .build()
+//                    .parseClaimsJws(jwt);
+//            return jws;
+//
+//        } catch (ExpiredJwtException e) {
+//            // 令牌已过期
+//            throw new TokenException("令牌已过期，请重新登录");
+//        } catch (UnsupportedJwtException e) {
+//            // 不支持的 JWT 格式
+//            throw new TokenException("不支持的令牌格式");
+//        } catch (MalformedJwtException e) {
+//            // 令牌格式错误
+//            throw new TokenException("令牌格式不正确");
+//        } catch (io.jsonwebtoken.security.SignatureException e) {
+//            // 签名验证失败（如秘钥不匹配）
+//            throw new TokenException("令牌签名无效");
+//        } catch (IllegalArgumentException e) {
+//            // 参数错误（如 JWT 字符串为空）
+//            throw new TokenException("令牌参数错误");
+//        } catch (Exception e) {
+//            // 其他未知错误
+//            throw new TokenException("认证失败，请检查令牌");
+//        }
+//    }
 
 }
 
